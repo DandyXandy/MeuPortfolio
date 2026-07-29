@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Dandy Abadie — Desarrollador Full-Stack",
+    "description": "Portafolio de Dandy Abadie Atoche, desarrollador full-stack y creador de ExitoCoach. Java, Spring Boot, React, React Native y Next.js."
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "skills": "Skills",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "cta": "Contacto"
+  },
+  "hero": {
+    "eyebrow": "Full-Stack Developer",
+    "headlinePre": "Hola, soy",
+    "headlineName": "Dandy Abadie",
+    "subheadline": "Desarrollador full-stack brasileño, actualmente radicado en Perú. Convierto ideas en productos rápidos, bonitos y que resuelven problemas reales.",
+    "ctaPrimary": "Ver proyectos",
+    "ctaSecondary": "Hablemos",
+    "scroll": "Desliza hacia abajo"
+  },
+  "about": {
+    "eyebrow": "Sobre mí",
+    "title": "Un poco de mi historia",
+    "paragraph1": "Soy de Brasil, actualmente vivo en Perú, donde estudio Ingeniería de Sistemas en la Universidad Tecnológica del Perú. Siempre me gustó aprender por mi cuenta — además de la universidad, estudio solo todos los días porque creo que la evolución no tiene fecha de vencimiento.",
+    "paragraph2": "Me encanta transformar ideas en productos reales: desde tiendas online hasta apps de organización personal. Cada proyecto nuevo es una excusa para aprender una tecnología distinta.",
+    "originLabel": "De dónde vengo",
+    "originValue": "Brasil → Perú",
+    "studyLabel": "Formación",
+    "studyValue": "Ing. de Sistemas — UTP",
+    "driveLabel": "Lo que me mueve",
+    "driveValue": "Aprender cada día"
+  },
+  "venture": {
+    "badge": "Mi propia marca",
+    "title": "ExitoCoach",
+    "description": "Empresa que fundé para desarrollar una app de evolución personal: notas, recordatorios, control de gastos y una 'brújula de vida' que muestra a dónde quieres llegar. Todavía en desarrollo — muy pronto por aquí."
+  },
+  "skills": {
+    "eyebrow": "Con qué trabajo",
+    "title": "Skills y Stack",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "tools": "Herramientas"
+    }
+  },
+  "projects": {
+    "eyebrow": "Mi trabajo",
+    "title": "Proyectos",
+    "subtitle": "Sitios que ya desarrollé — desde e-commerce hasta institucional, cada uno resolviendo un problema distinto.",
+    "featured": "Destacado",
+    "items": {
+      "ironmind": {
+        "title": "IronMind",
+        "description": "Tienda online de ropa oversize, con carrito, checkout por WhatsApp y panel administrativo completo."
+      },
+      "brutal-labs": {
+        "title": "Brutal Labs",
+        "description": "E-commerce de suplementos con un estilo brutalista y lleno de actitud."
+      },
+      "aurum-residences": {
+        "title": "Aurum Residences",
+        "description": "Landing page de inmuebles de altísimo nivel, con una curaduría exclusiva de áticos y mansiones."
+      },
+      "meridian-capital": {
+        "title": "Meridian Capital",
+        "description": "Sitio institucional de gestión patrimonial privada, con una identidad sobria y sofisticada."
+      },
+      "apex-mastermind": {
+        "title": "Apex Mastermind",
+        "description": "Landing page de un programa de alto rendimiento para founders y ejecutivos."
+      },
+      "raiz-blog": {
+        "title": "Raiz",
+        "description": "Blog con textos sobre trabajo consciente, creatividad y una vida más tranquila."
+      },
+      "cafe-productions": {
+        "title": "Café Productions",
+        "description": "Sitio de un estudio creativo brasileño de doblaje, videojuegos y artes visuales — uno de los proyectos visuales que más me gustan."
+      },
+      "ag-store": {
+        "title": "A/G Store",
+        "description": "Tienda de streetwear urbano en Piura, Perú, con catálogo y carrito de compras."
+      },
+      "sidma": {
+        "title": "SIDMA",
+        "description": "Sistema de monitoreo y denuncias ambientales para proteger la Amazonía."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Hablemos",
+    "title": "¿Construimos algo juntos?",
+    "subtitle": "Siempre abierto a nuevos proyectos, alianzas o simplemente charlar de tecnología.",
+    "whatsappMessage": "¡Hola Dandy! Vi tu portafolio y quiero hablar sobre un proyecto.",
+    "floatingCta": "Escríbeme"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Dandy Abadie — Full-Stack Developer",
+    "description": "Portfolio of Dandy Abadie Atoche, full-stack developer and creator of ExitoCoach. Java, Spring Boot, React, React Native and Next.js."
+  },
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cta": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Full-Stack Developer",
+    "headlinePre": "Hi, I'm",
+    "headlineName": "Dandy Abadie",
+    "subheadline": "Brazilian full-stack developer, currently based in Peru. I turn ideas into fast, good-looking products that solve real problems.",
+    "ctaPrimary": "View projects",
+    "ctaSecondary": "Get in touch",
+    "scroll": "Scroll down"
+  },
+  "about": {
+    "eyebrow": "About me",
+    "title": "A bit of my story",
+    "paragraph1": "I'm from Brazil, currently living in Peru, where I study Systems Engineering at Universidad Tecnológica del Perú. I've always been the type who learns on my own — besides university, I study by myself every day because growth doesn't have an expiration date.",
+    "paragraph2": "I love turning ideas into real products: from online stores to personal-organization apps. Every new project is an excuse to learn a different technology.",
+    "originLabel": "Where I'm from",
+    "originValue": "Brazil → Peru",
+    "studyLabel": "Education",
+    "studyValue": "Systems Eng. — UTP",
+    "driveLabel": "What drives me",
+    "driveValue": "Learning every day"
+  },
+  "venture": {
+    "badge": "My own venture",
+    "title": "ExitoCoach",
+    "description": "A company I founded to build a personal-growth app: notes, reminders, expense tracking, and a 'life compass' that shows you where you want to go. Still in development — coming soon."
+  },
+  "skills": {
+    "eyebrow": "What I work with",
+    "title": "Skills & Stack",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "tools": "Tools"
+    }
+  },
+  "projects": {
+    "eyebrow": "My work",
+    "title": "Projects",
+    "subtitle": "Sites I've built — from e-commerce to corporate, each one solving a different problem.",
+    "featured": "Featured",
+    "items": {
+      "ironmind": {
+        "title": "IronMind",
+        "description": "Oversized clothing online store with cart, WhatsApp checkout, and a full admin dashboard."
+      },
+      "brutal-labs": {
+        "title": "Brutal Labs",
+        "description": "Supplement e-commerce with a bold, brutalist attitude."
+      },
+      "aurum-residences": {
+        "title": "Aurum Residences",
+        "description": "Ultra-high-end real estate landing page with an exclusive curation of penthouses and mansions."
+      },
+      "meridian-capital": {
+        "title": "Meridian Capital",
+        "description": "Corporate site for a private wealth management firm, sober and sophisticated."
+      },
+      "apex-mastermind": {
+        "title": "Apex Mastermind",
+        "description": "Landing page for a high-performance program for founders and executives."
+      },
+      "raiz-blog": {
+        "title": "Raiz",
+        "description": "A blog about mindful work, creativity, and living a slower life."
+      },
+      "cafe-productions": {
+        "title": "Café Productions",
+        "description": "Site for a Brazilian creative studio in voice acting, games and visual arts — one of my favorite visuals to build."
+      },
+      "ag-store": {
+        "title": "A/G Store",
+        "description": "Urban streetwear store in Piura, Peru, with catalog and shopping cart."
+      },
+      "sidma": {
+        "title": "SIDMA",
+        "description": "Environmental monitoring and reporting system to help protect the Amazon."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Let's talk",
+    "title": "Ready to build something together?",
+    "subtitle": "Always open to new projects, partnerships, or just a good chat about tech.",
+    "whatsappMessage": "Hi Dandy! I saw your portfolio and want to talk about a project.",
+    "floatingCta": "Message me"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

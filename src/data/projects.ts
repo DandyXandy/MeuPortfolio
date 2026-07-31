@@ -112,11 +112,6 @@ export const projects: Project[] = [
     url: 'https://blog-beta-seven-71.vercel.app/pt',
     tags: ['Node.js', 'Express', 'PostgreSQL'],
   },
-  {
-    id: 'Blog',
-    url: 'https://blog-beta-seven-71.vercel.app/pt',
-    tags: ['Node.js', 'Express', 'PostgreSQL'],
-  },
 
   // --- exemplo (apague o comentário e preencha para usar) ---------
   // { id: 'meu-novo-site', url: 'https://meu-novo-site.vercel.app/', tags: ['Next.js'], featured: false },

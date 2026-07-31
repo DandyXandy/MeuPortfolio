@@ -92,6 +92,31 @@ export const projects: Project[] = [
     url: 'https://sidma-monitoramento.vercel.app/',
     tags: ['Node.js', 'Express', 'PostgreSQL'],
   },
+  {
+    id: 'Gym',
+    url: 'https://gymforja.vercel.app/',
+    tags: ['Node.js', 'Express', 'E-commerceL'],
+  },
+  {
+    id: 'Restaurantes',
+    url: 'https://paginaraizlatina.vercel.app/',
+    tags: ['Node.js', 'Express', 'PostgreSQL'],
+  },
+  {
+    id: 'Exemplo Ecommerce',
+    url: 'https://ejemplo-tienda-ecommerce.vercel.app/',
+    tags: ['Node.js', 'Express', 'PostgreSQL'],
+  },
+  {
+    id: 'Blog',
+    url: 'https://blog-beta-seven-71.vercel.app/pt',
+    tags: ['Node.js', 'Express', 'PostgreSQL'],
+  },
+  {
+    id: 'Blog',
+    url: 'https://blog-beta-seven-71.vercel.app/pt',
+    tags: ['Node.js', 'Express', 'PostgreSQL'],
+  },
 
   // --- exemplo (apague o comentário e preencha para usar) ---------
   // { id: 'meu-novo-site', url: 'https://meu-novo-site.vercel.app/', tags: ['Next.js'], featured: false },

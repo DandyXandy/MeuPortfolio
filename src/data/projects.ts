@@ -53,7 +53,7 @@ export const projects: Project[] = [
   },
   {
     id: 'brutal-labs',
-    url: 'https://brutal-labs.vercel.app/pt',
+    url: 'https://brutal-labs.vercel.app/',
     tags: ['Next.js', 'Tailwind', 'E-commerce'],
   },
   {

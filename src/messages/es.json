@@ -8,7 +8,7 @@
     "skills": "Skills",
     "projects": "Proyectos",
     "contact": "Contacto",
-    "cta": "Contacto"
+    "cta": "Solicitar Proyecto"
   },
   "hero": {
     "eyebrow": "Full-Stack Developer",
@@ -87,6 +87,22 @@
       "sidma": {
         "title": "SIDMA",
         "description": "Sistema de monitoreo y denuncias ambientales para proteger la Amazonía."
+      },
+      "Gym": {
+        "title": "Gym Forja",
+        "description": "Landing page para gimnasio, enfocada en captar nuevos alumnos y mostrar los planes de entrenamiento."
+      },
+      "Restaurantes": {
+        "title": "Raíz Latina",
+        "description": "Sitio institucional para restaurante, con menú, ambiente y contacto directo para reservas."
+      },
+      "Exemplo Ecommerce": {
+        "title": "Tienda Modelo",
+        "description": "Plantilla de e-commerce completa, usada como base para armar tiendas online rápidamente."
+      },
+      "Blog": {
+        "title": "Raiz — Blog",
+        "description": "Blog con textos sobre trabajo consciente, creatividad y una vida más tranquila."
       }
     }
   },
@@ -99,5 +115,171 @@
   },
   "footer": {
     "rights": "Todos los derechos reservados."
+  },
+  "requestProjectCta": {
+    "badge": "Nuevo",
+    "title": "¿Tienes un proyecto en mente?",
+    "subtitle": "Responde un brief rápido y recibiré todo organizado — sin ida y vuelta de mensajes para lo básico.",
+    "cta": "Solicitar Proyecto"
+  },
+  "requestProject": {
+    "eyebrow": "Construyamos tu proyecto",
+    "title": "Solicitar Proyecto",
+    "subtitle": "Responde algunas preguntas rápidas y recibiré todo lo que necesito para empezar — sin 20 mensajes de ida y vuelta para lo básico.",
+    "back": "Atrás",
+    "next": "Continuar",
+    "yes": "Sí",
+    "no": "No",
+    "required": "Campo obligatorio",
+    "selectRequired": "Selecciona una opción antes de continuar.",
+    "error": "No pude enviarlo ahora. Intenta de nuevo en unos segundos o escríbeme directo por WhatsApp.",
+    "progress": {
+      "projectType": "Proyecto",
+      "info": "Información",
+      "design": "Diseño",
+      "features": "Funcionalidades",
+      "timeline": "Plazo",
+      "budget": "Presupuesto",
+      "contact": "Contacto",
+      "summary": "Resumen"
+    },
+    "steps": {
+      "projectType": {
+        "title": "¿Qué proyecto quieres crear?",
+        "subtitle": "Elige lo que más se parezca a lo que tienes en mente."
+      },
+      "info": {
+        "title": "Cuéntame más del proyecto",
+        "subtitle": "Cuantos más detalles, más preciso será tu presupuesto."
+      },
+      "design": {
+        "title": "¿Qué estilo visual imaginas?",
+        "subtitle": "Puedes elegir más de uno. Si tienes un sitio de referencia, pega el link."
+      },
+      "features": {
+        "title": "¿Qué funcionalidades necesitas?",
+        "subtitle": "Marca todo lo que tenga sentido — se puede ajustar después."
+      },
+      "timeline": {
+        "title": "¿Cuál es el plazo?",
+        "subtitle": "Esto me ayuda a organizar bien la entrega."
+      },
+      "budget": {
+        "title": "¿Qué rango de presupuesto tienes en mente?",
+        "subtitle": "Sin compromiso — solo para sugerirte la mejor solución según tu realidad."
+      },
+      "contact": {
+        "title": "¿Cómo puedo contactarte?",
+        "subtitle": "En cuanto envíes, te contacto por el canal que prefieras."
+      },
+      "summary": {
+        "title": "Revisa que todo esté correcto",
+        "subtitle": "Puedes editar cualquier parte antes de enviar.",
+        "submit": "Enviar Proyecto",
+        "sending": "Enviando..."
+      }
+    },
+    "projectTypes": {
+      "landing-page": { "title": "Landing Page", "description": "Una página única enfocada en convertir visitantes en clientes." },
+      "institutional": { "title": "Sitio Institucional", "description": "Sitio completo para presentar tu empresa, con varias páginas." },
+      "ecommerce": { "title": "E-commerce", "description": "Tienda online con carrito, pagos y gestión de productos." },
+      "web-app": { "title": "Aplicación Web", "description": "Un sistema a medida para resolver un problema específico." },
+      "dashboard": { "title": "Dashboard", "description": "Panel con datos, gráficos y métricas en tiempo real." },
+      "blog": { "title": "Blog", "description": "Espacio para publicar contenido y textos con frecuencia." },
+      "other": { "title": "Otro", "description": "¿Tienes algo distinto en mente? Cuéntame en el siguiente paso." }
+    },
+    "fields": {
+      "business": "¿Cuál es tu negocio?",
+      "goal": "¿Cuál es el objetivo de la página?",
+      "hasBranding": "¿Ya tienes identidad visual (logo, colores)?",
+      "hasDomain": "¿Ya tienes dominio?",
+      "hasHosting": "¿Ya tienes hosting?",
+      "hasCopy": "¿Ya tienes los textos listos?",
+      "hasImages": "¿Ya tienes las imágenes/fotos?",
+      "wantsAnimations": "¿Te gustaría tener animaciones?",
+      "reference": "¿Tienes algún sitio de referencia?",
+      "pagesCount": "¿Aproximadamente cuántas páginas?",
+      "productCount": "¿Aproximadamente cuántos productos?",
+      "onlinePayment": "¿Necesitas pago online?",
+      "stockControl": "¿Necesitas control de stock?",
+      "adminPanel": "¿Necesitas panel administrativo?",
+      "login": "¿Necesitas login?",
+      "coupons": "¿Necesitas cupones de descuento?",
+      "shipping": "¿Necesitas cálculo de envío?",
+      "integrations": "¿Alguna integración específica? (ej: WhatsApp, ERP, etc)",
+      "problem": "¿Qué problema quieres resolver?",
+      "userCount": "¿Cuántos usuarios lo van a usar?",
+      "existingDatabase": "¿Ya existe una base de datos?",
+      "charts": "¿Qué gráficos o métricas necesitas ver?",
+      "topic": "¿De qué tema trata el blog?",
+      "postFrequency": "¿Con qué frecuencia piensas publicar?",
+      "wantsNewsletter": "¿Te gustaría tener newsletter?",
+      "description": "Cuéntame con detalle qué tienes en mente",
+      "designReference": "Link de referencia (opcional)",
+      "contactName": "Nombre",
+      "contactCompany": "Empresa (opcional)",
+      "contactEmail": "Correo",
+      "contactWhatsapp": "WhatsApp",
+      "preferredContact": "¿Cómo prefieres que te contacte?"
+    },
+    "designStyles": {
+      "minimalist": "Minimalista",
+      "corporate": "Corporativo",
+      "elegant": "Elegante",
+      "luxurious": "Lujoso",
+      "tech": "Tecnológico",
+      "dark": "Oscuro",
+      "light": "Claro",
+      "colorful": "Colorido"
+    },
+    "features": {
+      "login": "Login",
+      "client-area": "Área de Cliente",
+      "blog": "Blog",
+      "chat": "Chat",
+      "whatsapp": "WhatsApp",
+      "scheduling": "Agendamiento",
+      "map": "Mapa",
+      "payments": "Pagos",
+      "cms": "CMS",
+      "dashboard": "Dashboard",
+      "api": "API",
+      "database": "Base de Datos",
+      "auth": "Autenticación",
+      "file-upload": "Subida de Archivos",
+      "newsletter": "Newsletter"
+    },
+    "timelines": {
+      "urgent": "Urgente",
+      "15-days": "15 días",
+      "30-days": "30 días",
+      "60-days": "60 días",
+      "no-deadline": "Sin plazo definido"
+    },
+    "budgets": {
+      "under-300": "Menos de US$300",
+      "300-600": "US$300–600",
+      "600-1000": "US$600–1.000",
+      "1000-3000": "US$1.000–3.000",
+      "over-3000": "Más de US$3.000",
+      "unsure": "Aún no lo sé"
+    },
+    "preferredContacts": {
+      "whatsapp": "WhatsApp",
+      "email": "Correo",
+      "videocall": "Videollamada",
+      "phone": "Teléfono"
+    },
+    "summary": {
+      "empty": "Sin respuestas todavía"
+    },
+    "success": {
+      "title": "¡Proyecto recibido!",
+      "subtitle": "Recibí toda la información y ya envié una confirmación a tu correo. Pronto me pondré en contacto.",
+      "backHome": "Volver al inicio"
+    },
+    "pdf": {
+      "heading": "Brief de Proyecto"
+    }
   }
 }

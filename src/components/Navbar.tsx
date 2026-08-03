@@ -53,12 +53,12 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <LocaleSwitcher />
-          <a
-            href="#contato"
+          <Link
+            href="/solicitar-projeto"
             className="rounded-full bg-aurora-gradient px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105"
           >
             {t('cta')}
-          </a>
+          </Link>
         </div>
 
         <button
@@ -91,13 +91,13 @@ export default function Navbar() {
               ))}
               <div className="flex items-center justify-between pt-2">
                 <LocaleSwitcher />
-                <a
-                  href="#contato"
+                <Link
+                  href="/solicitar-projeto"
                   onClick={() => setOpen(false)}
                   className="rounded-full bg-aurora-gradient px-5 py-2.5 text-sm font-semibold text-white"
                 >
                   {t('cta')}
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

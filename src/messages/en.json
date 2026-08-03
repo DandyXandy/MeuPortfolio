@@ -8,7 +8,7 @@
     "skills": "Skills",
     "projects": "Projects",
     "contact": "Contact",
-    "cta": "Contact"
+    "cta": "Request a Project"
   },
   "hero": {
     "eyebrow": "Full-Stack Developer",
@@ -87,6 +87,22 @@
       "sidma": {
         "title": "SIDMA",
         "description": "Environmental monitoring and reporting system to help protect the Amazon."
+      },
+      "Gym": {
+        "title": "Gym Forja",
+        "description": "Gym landing page focused on enrolling new members and showcasing training plans."
+      },
+      "Restaurantes": {
+        "title": "Raíz Latina",
+        "description": "Corporate site for a restaurant, with menu, ambiance, and direct contact for reservations."
+      },
+      "Exemplo Ecommerce": {
+        "title": "Store Template",
+        "description": "Full e-commerce template used as a base to quickly set up online stores."
+      },
+      "Blog": {
+        "title": "Raiz — Blog",
+        "description": "A blog about mindful work, creativity, and living a slower life."
       }
     }
   },
@@ -99,5 +115,171 @@
   },
   "footer": {
     "rights": "All rights reserved."
+  },
+  "requestProjectCta": {
+    "badge": "New",
+    "title": "Have a project in mind?",
+    "subtitle": "Fill out a quick brief and I'll get everything organized — no back-and-forth messages just to cover the basics.",
+    "cta": "Request a Project"
+  },
+  "requestProject": {
+    "eyebrow": "Let's build your project",
+    "title": "Request a Project",
+    "subtitle": "Answer a few quick questions and I'll get everything I need to get started — no need for 20 back-and-forth messages just to cover the basics.",
+    "back": "Back",
+    "next": "Continue",
+    "yes": "Yes",
+    "no": "No",
+    "required": "Required field",
+    "selectRequired": "Select an option before continuing.",
+    "error": "Couldn't send it right now. Try again in a few seconds or message me directly on WhatsApp.",
+    "progress": {
+      "projectType": "Project",
+      "info": "Info",
+      "design": "Design",
+      "features": "Features",
+      "timeline": "Timeline",
+      "budget": "Budget",
+      "contact": "Contact",
+      "summary": "Summary"
+    },
+    "steps": {
+      "projectType": {
+        "title": "What project do you want to build?",
+        "subtitle": "Pick whatever fits what you have in mind."
+      },
+      "info": {
+        "title": "Tell me more about the project",
+        "subtitle": "The more detail you give, the more accurate your quote will be."
+      },
+      "design": {
+        "title": "What visual style do you picture?",
+        "subtitle": "You can pick more than one. If you have a reference site, drop the link."
+      },
+      "features": {
+        "title": "What features do you need?",
+        "subtitle": "Check everything that makes sense — we can adjust later."
+      },
+      "timeline": {
+        "title": "What's the timeline?",
+        "subtitle": "This helps me plan the delivery properly."
+      },
+      "budget": {
+        "title": "What budget range do you have in mind?",
+        "subtitle": "No commitment — just so I can suggest the best solution for your reality."
+      },
+      "contact": {
+        "title": "How can I reach you?",
+        "subtitle": "Once you submit, I'll reach out through your preferred channel."
+      },
+      "summary": {
+        "title": "Double-check everything",
+        "subtitle": "You can edit any part before sending.",
+        "submit": "Send Project",
+        "sending": "Sending..."
+      }
+    },
+    "projectTypes": {
+      "landing-page": { "title": "Landing Page", "description": "A single page focused on converting visitors into customers." },
+      "institutional": { "title": "Corporate Site", "description": "A full site to showcase your company, with multiple pages." },
+      "ecommerce": { "title": "E-commerce", "description": "An online store with cart, payments and product management." },
+      "web-app": { "title": "Web App", "description": "A custom system built to solve a specific problem." },
+      "dashboard": { "title": "Dashboard", "description": "A panel with data, charts and real-time metrics." },
+      "blog": { "title": "Blog", "description": "A space to publish content and articles regularly." },
+      "other": { "title": "Other", "description": "Have something different in mind? Tell me in the next step." }
+    },
+    "fields": {
+      "business": "What's your business?",
+      "goal": "What's the page's goal?",
+      "hasBranding": "Do you already have branding (logo, colors)?",
+      "hasDomain": "Do you already have a domain?",
+      "hasHosting": "Do you already have hosting?",
+      "hasCopy": "Do you already have the copy ready?",
+      "hasImages": "Do you already have the images/photos?",
+      "wantsAnimations": "Would you like animations?",
+      "reference": "Any reference site?",
+      "pagesCount": "Roughly how many pages?",
+      "productCount": "Roughly how many products?",
+      "onlinePayment": "Need online payment?",
+      "stockControl": "Need stock control?",
+      "adminPanel": "Need an admin panel?",
+      "login": "Need login?",
+      "coupons": "Need discount coupons?",
+      "shipping": "Need shipping calculation?",
+      "integrations": "Any specific integrations? (e.g. WhatsApp, ERP...)",
+      "problem": "What problem do you want to solve?",
+      "userCount": "How many users will use it?",
+      "existingDatabase": "Is there an existing database?",
+      "charts": "What charts or metrics do you need to see?",
+      "topic": "What's the blog about?",
+      "postFrequency": "How often do you plan to publish?",
+      "wantsNewsletter": "Would you like a newsletter?",
+      "description": "Tell me in detail what you have in mind",
+      "designReference": "Reference link (optional)",
+      "contactName": "Name",
+      "contactCompany": "Company (optional)",
+      "contactEmail": "Email",
+      "contactWhatsapp": "WhatsApp",
+      "preferredContact": "How do you prefer to be contacted?"
+    },
+    "designStyles": {
+      "minimalist": "Minimalist",
+      "corporate": "Corporate",
+      "elegant": "Elegant",
+      "luxurious": "Luxurious",
+      "tech": "Tech",
+      "dark": "Dark",
+      "light": "Light",
+      "colorful": "Colorful"
+    },
+    "features": {
+      "login": "Login",
+      "client-area": "Client Area",
+      "blog": "Blog",
+      "chat": "Chat",
+      "whatsapp": "WhatsApp",
+      "scheduling": "Scheduling",
+      "map": "Map",
+      "payments": "Payments",
+      "cms": "CMS",
+      "dashboard": "Dashboard",
+      "api": "API",
+      "database": "Database",
+      "auth": "Authentication",
+      "file-upload": "File Upload",
+      "newsletter": "Newsletter"
+    },
+    "timelines": {
+      "urgent": "Urgent",
+      "15-days": "15 days",
+      "30-days": "30 days",
+      "60-days": "60 days",
+      "no-deadline": "No fixed deadline"
+    },
+    "budgets": {
+      "under-300": "Under US$300",
+      "300-600": "US$300–600",
+      "600-1000": "US$600–1,000",
+      "1000-3000": "US$1,000–3,000",
+      "over-3000": "Over US$3,000",
+      "unsure": "Not sure yet"
+    },
+    "preferredContacts": {
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "videocall": "Video call",
+      "phone": "Phone"
+    },
+    "summary": {
+      "empty": "No answers yet"
+    },
+    "success": {
+      "title": "Project received!",
+      "subtitle": "I've got all the information and already sent a confirmation to your email. I'll be in touch soon.",
+      "backHome": "Back to home"
+    },
+    "pdf": {
+      "heading": "Project Brief"
+    }
   }
 }

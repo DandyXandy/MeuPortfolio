@@ -4,6 +4,7 @@ import About from '@/components/About';
 import Venture from '@/components/Venture';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
+import RequestProjectCta from '@/components/RequestProjectCta';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
@@ -21,6 +22,7 @@ export default function HomePage() {
         <Venture />
         <Skills />
         <Projects />
+        <RequestProjectCta />
         <Contact />
       </main>
       <Footer />

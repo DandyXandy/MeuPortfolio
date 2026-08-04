@@ -88,21 +88,17 @@
         "title": "SIDMA",
         "description": "Environmental monitoring and reporting system to help protect the Amazon."
       },
-      "Gym": {
+      "gym-forja": {
         "title": "Gym Forja",
         "description": "Gym landing page focused on enrolling new members and showcasing training plans."
       },
-      "Restaurantes": {
+      "raiz-latina": {
         "title": "Raíz Latina",
         "description": "Corporate site for a restaurant, with menu, ambiance, and direct contact for reservations."
       },
-      "Exemplo Ecommerce": {
+      "loja-modelo": {
         "title": "Store Template",
         "description": "Full e-commerce template used as a base to quickly set up online stores."
-      },
-      "Blog": {
-        "title": "Raiz — Blog",
-        "description": "A blog about mindful work, creativity, and living a slower life."
       }
     }
   },

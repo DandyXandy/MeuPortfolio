@@ -88,21 +88,17 @@
         "title": "SIDMA",
         "description": "Sistema de monitoramento e denúncias ambientais para proteção da Amazônia."
       },
-      "Gym": {
+      "gym-forja": {
         "title": "Gym Forja",
         "description": "Landing page para academia, focada em captar novos alunos e apresentar os planos de treino."
       },
-      "Restaurantes": {
+      "raiz-latina": {
         "title": "Raíz Latina",
         "description": "Site institucional para restaurante, com cardápio, ambiente e contato direto para reservas."
       },
-      "Exemplo Ecommerce": {
+      "loja-modelo": {
         "title": "Loja Modelo",
         "description": "Template de e-commerce completo, usado como base para montar lojas online rapidamente."
-      },
-      "Blog": {
-        "title": "Raiz — Blog",
-        "description": "Blog com textos sobre trabalho consciente, criatividade e viver com mais calma."
       }
     }
   },

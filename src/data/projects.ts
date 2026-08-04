@@ -93,23 +93,18 @@ export const projects: Project[] = [
     tags: ['Node.js', 'Express', 'PostgreSQL'],
   },
   {
-    id: 'Gym',
+    id: 'gym-forja',
     url: 'https://gymforja.vercel.app/',
-    tags: ['Node.js', 'Express', 'E-commerceL'],
+    tags: ['Node.js', 'Express', 'E-commerce'],
   },
   {
-    id: 'Restaurantes',
+    id: 'raiz-latina',
     url: 'https://paginaraizlatina.vercel.app/',
     tags: ['Node.js', 'Express', 'PostgreSQL'],
   },
   {
-    id: 'Exemplo Ecommerce',
+    id: 'loja-modelo',
     url: 'https://ejemplo-tienda-ecommerce.vercel.app/',
-    tags: ['Node.js', 'Express', 'PostgreSQL'],
-  },
-  {
-    id: 'Blog',
-    url: 'https://blog-beta-seven-71.vercel.app/pt',
     tags: ['Node.js', 'Express', 'PostgreSQL'],
   },
 

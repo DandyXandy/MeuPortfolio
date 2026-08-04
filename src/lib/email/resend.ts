@@ -14,7 +14,7 @@ export async function sendNotificationEmail(data: BriefData, pdfBuffer: Buffer) 
   const to = process.env.NOTIFICATION_EMAIL;
   if (!to) throw new Error('NOTIFICATION_EMAIL não configurado no .env');
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from,
     to,
     subject: `Novo projeto: ${data.clientName} — ${data.projectTypeTitle}`,
@@ -26,6 +26,8 @@ export async function sendNotificationEmail(data: BriefData, pdfBuffer: Buffer) 
       },
     ],
   });
+
+  if (error) throw new Error(`Resend (notificação): ${error.message}`);
 }
 
 export async function sendConfirmationEmail(params: {
@@ -37,10 +39,12 @@ export async function sendConfirmationEmail(params: {
   const from = process.env.RESEND_FROM_EMAIL ?? 'Dandy Abadie <onboarding@resend.dev>';
   const { subject, html } = confirmationEmailHtml(params);
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from,
     to: params.clientEmail,
     subject,
     html,
   });
+
+  if (error) throw new Error(`Resend (confirmação): ${error.message}`);
 }

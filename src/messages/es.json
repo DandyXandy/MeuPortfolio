@@ -505,5 +505,24 @@
     "pdf": {
       "heading": "Brief de Continuidad"
     }
+  },
+  "projectPage": {
+    "eyebrow": "Tu proyecto",
+    "greeting": "¡Hola, {name}!",
+    "subtitle": "Aquí tienes un resumen de todo lo que me enviaste.",
+    "statusLabel": "Estado de tu proyecto",
+    "status": {
+      "received": "Recibido",
+      "in_review": "En análisis",
+      "proposal_sent": "Propuesta enviada",
+      "approved": "Aprobado"
+    },
+    "helpText": "¿Tienes alguna duda o quieres agregar información? Escríbeme directo por WhatsApp.",
+    "whatsappCta": "Escríbeme por WhatsApp",
+    "notFound": {
+      "title": "No encontramos este proyecto",
+      "subtitle": "El enlace puede estar incorrecto o haber expirado. Si crees que esto es un error, escríbeme por WhatsApp y lo reviso.",
+      "backHome": "Volver al inicio"
+    }
   }
 }

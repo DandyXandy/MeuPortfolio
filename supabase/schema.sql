@@ -35,8 +35,8 @@ alter table project_requests enable row level security;
 -- perguntas são diferentes.
 create table if not exists project_briefings (
   id uuid primary key default gen_random_uuid(),
-  -- token público pra uma futura página individual tipo /projeto/[token]
-  -- (não usado ainda, só deixando a arquitetura pronta pra isso).
+  -- token público usado na página individual /projeto/[token] — quem
+  -- tem o link acessa o resumo daquele briefing, sem precisar de login.
   token uuid not null default gen_random_uuid() unique,
   created_at timestamptz not null default now(),
   contact_name text not null,
@@ -57,7 +57,11 @@ create table if not exists project_briefings (
   timeline text not null,
   budget text not null,
   locale text not null default 'pt',
-  pdf_url text
+  pdf_url text,
+  -- status do briefing, editável só por você direto na tabela (Table
+  -- Editor do Supabase) até existir um painel admin: received,
+  -- in_review, proposal_sent ou approved.
+  status text not null default 'received'
 );
 
 alter table project_briefings enable row level security;

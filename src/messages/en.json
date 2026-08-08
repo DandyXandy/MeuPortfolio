@@ -505,5 +505,24 @@
     "pdf": {
       "heading": "Continuation Brief"
     }
+  },
+  "projectPage": {
+    "eyebrow": "Your project",
+    "greeting": "Hi, {name}!",
+    "subtitle": "Here's a summary of everything you sent me.",
+    "statusLabel": "Your project's status",
+    "status": {
+      "received": "Received",
+      "in_review": "Under review",
+      "proposal_sent": "Proposal sent",
+      "approved": "Approved"
+    },
+    "helpText": "Have a question or want to add something? Message me directly on WhatsApp.",
+    "whatsappCta": "Message me on WhatsApp",
+    "notFound": {
+      "title": "We couldn't find this project",
+      "subtitle": "The link may be incorrect or expired. If you think this is a mistake, message me on WhatsApp and I'll check.",
+      "backHome": "Back to home"
+    }
   }
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, MessageCircleMore } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
 export default function RequestProjectCta() {
@@ -10,28 +10,58 @@ export default function RequestProjectCta() {
   return (
     <section className="relative bg-ink py-6">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <div
-          className="card-glow relative overflow-hidden rounded-3xl border border-violet-light/30 bg-gradient-to-br from-white/[0.05] to-transparent p-8 text-center sm:p-14"
+        <p
+          className="mb-6 text-center text-xs font-semibold uppercase tracking-widest2 text-violet-light"
           data-aos="fade-up"
         >
-          <div className="absolute inset-0 bg-radial-fade" />
-          <div className="relative">
-            <span className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-violet-light/40 bg-aurora-gradient-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-widest2 text-violet-light">
-              <Sparkles size={13} />
-              {t('badge')}
+          {t('eyebrow')}
+        </p>
+
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {/* Novo cliente */}
+          <div
+            className="card-glow relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8"
+            data-aos="fade-up"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest2 text-mist/50">
+              <Sparkles size={12} />
+              {t('newClient.badge')}
             </span>
-            <h2 className="mx-auto max-w-2xl font-display text-2xl font-semibold text-mist sm:text-3xl">
-              {t('title')}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-mist/60 sm:text-base">
-              {t('subtitle')}
-            </p>
+            <h3 className="mt-4 font-display text-xl font-semibold text-mist">
+              {t('newClient.title')}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-mist/60">{t('newClient.subtitle')}</p>
             <Link
               href="/solicitar-projeto"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-aurora-gradient px-8 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-105"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-aurora-gradient px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
-              {t('cta')}
-              <ArrowRight size={16} />
+              {t('newClient.cta')}
+              <ArrowRight size={15} />
+            </Link>
+          </div>
+
+          {/* Já conversamos */}
+          <div
+            className="card-glow relative overflow-hidden rounded-3xl border border-gold/25 bg-gradient-to-br from-white/[0.04] to-transparent p-8"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest2 text-gold">
+              <MessageCircleMore size={12} />
+              {t('existingClient.badge')}
+            </span>
+            <h3 className="mt-4 font-display text-xl font-semibold text-mist">
+              {t('existingClient.title')}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-mist/60">
+              {t('existingClient.subtitle')}
+            </p>
+            <Link
+              href="/continuar-projeto"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-semibold text-gold transition-colors hover:bg-gold/10"
+            >
+              {t('existingClient.cta')}
+              <ArrowRight size={15} />
             </Link>
           </div>
         </div>

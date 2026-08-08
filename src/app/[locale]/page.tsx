@@ -4,6 +4,7 @@ import About from '@/components/About';
 import Venture from '@/components/Venture';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
+import Plans from '@/components/Plans';
 import RequestProjectCta from '@/components/RequestProjectCta';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -22,6 +23,7 @@ export default function HomePage() {
         <Venture />
         <Skills />
         <Projects />
+        <Plans />
         <RequestProjectCta />
         <Contact />
       </main>

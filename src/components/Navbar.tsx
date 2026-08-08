@@ -23,6 +23,7 @@ export default function Navbar() {
     { href: '#sobre', label: t('about') },
     { href: '#skills', label: t('skills') },
     { href: '#projetos', label: t('projects') },
+    { href: '#planos', label: t('plans') },
     { href: '#contato', label: t('contact') },
   ];
 

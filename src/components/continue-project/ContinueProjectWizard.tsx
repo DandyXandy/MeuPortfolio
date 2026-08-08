@@ -1,95 +1,143 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { ArrowLeft, ArrowRight, AlertCircle } from 'lucide-react';
 import {
-  requestProjectSchema,
-  WIZARD_STEPS,
+  continueProjectSchema,
+  getVisibleSteps,
   STEP_FIELDS,
-  type RequestProjectInput,
+  type ContinueProjectInput,
   type WizardStep,
-} from '@/lib/request-project/schema';
+} from '@/lib/continue-project/schema';
 import StepProgressBar from '@/components/ui/StepProgressBar';
+import StepClientInfo from './steps/StepClientInfo';
+import StepBusiness from './steps/StepBusiness';
 import StepProjectType from './steps/StepProjectType';
-import StepInfo from './steps/StepInfo';
-import StepDesign from './steps/StepDesign';
+import StepProducts from './steps/StepProducts';
 import StepFeatures from './steps/StepFeatures';
+import StepReferences from './steps/StepReferences';
 import StepTimeline from './steps/StepTimeline';
 import StepBudget from './steps/StepBudget';
-import StepContact from './steps/StepContact';
 import StepSummary from './steps/StepSummary';
 import SuccessScreen from './SuccessScreen';
 
+const STORAGE_KEY = 'continue-project-draft';
+
 const STEP_COMPONENTS: Record<WizardStep, React.ComponentType<any>> = {
+  clientInfo: StepClientInfo,
+  business: StepBusiness,
   projectType: StepProjectType,
-  info: StepInfo,
-  design: StepDesign,
+  products: StepProducts,
   features: StepFeatures,
+  references: StepReferences,
   timeline: StepTimeline,
   budget: StepBudget,
-  contact: StepContact,
   summary: StepSummary,
 };
 
-export default function RequestProjectWizard() {
-  const t = useTranslations('requestProject');
+const DEFAULT_VALUES: Partial<ContinueProjectInput> = {
+  contactName: '',
+  companyName: '',
+  contactWhatsapp: '',
+  contactEmail: '',
+  instagram: '',
+  currentSite: '',
+  businessSegment: undefined,
+  businessDescription: '',
+  projectType: undefined,
+  productCount: undefined,
+  features: [],
+  paymentGateway: undefined,
+  referenceSite: '',
+  desiredStyle: '',
+  visualReferences: '',
+  timeline: undefined,
+  budget: undefined,
+  website: '',
+};
+
+export default function ContinueProjectWizard() {
+  const t = useTranslations('continueProject');
   const locale = useLocale();
-  const [stepIndex, setStepIndex] = useState(0);
+  const [currentStepId, setCurrentStepId] = useState<WizardStep>('clientInfo');
   const [direction, setDirection] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showStepHint, setShowStepHint] = useState(false);
 
-  const methods = useForm<RequestProjectInput>({
-    resolver: zodResolver(requestProjectSchema),
+  const methods = useForm<ContinueProjectInput>({
+    resolver: zodResolver(continueProjectSchema),
     mode: 'onChange',
-    defaultValues: {
-      projectType: undefined,
-      info: {},
-      designStyles: [],
-      designReference: '',
-      features: [],
-      timeline: undefined,
-      budget: undefined,
-      contactName: '',
-      contactCompany: '',
-      contactEmail: '',
-      contactWhatsapp: '',
-      preferredContact: undefined,
-      locale: locale as 'pt' | 'en' | 'es',
-      website: '',
-    } as Partial<RequestProjectInput>,
+    defaultValues: { ...DEFAULT_VALUES, locale: locale as 'pt' | 'en' | 'es' } as Partial<ContinueProjectInput>,
   });
 
-  const currentStep = WIZARD_STEPS[stepIndex];
-  const StepComponent = STEP_COMPONENTS[currentStep];
+  // Restaura rascunho salvo no navegador (se existir e for válido).
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) methods.reset({ ...JSON.parse(saved), locale: locale as 'pt' | 'en' | 'es' });
+    } catch {
+      // rascunho corrompido ou indisponível — ignora e segue com o formulário vazio
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Salva o rascunho a cada mudança, pra não perder nada se o
+  // visitante fechar a aba no meio do preenchimento.
+  const watchedValues = methods.watch();
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(watchedValues));
+      } catch {
+        // storage cheio ou bloqueado — sem problema, é só uma conveniência
+      }
+    }, 400);
+    return () => clearTimeout(timeout);
+  }, [watchedValues]);
+
+  const projectType = methods.watch('projectType');
+  const visibleSteps = useMemo(() => getVisibleSteps(projectType), [projectType]);
+
+  // Se a etapa "produtos" some da lista (o cliente trocou de tipo de
+  // projeto pra um sem produtos) e era onde ele estava, avança sozinho.
+  useEffect(() => {
+    if (!visibleSteps.includes(currentStepId)) {
+      setCurrentStepId('features');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visibleSteps]);
+
+  const stepIndex = Math.max(0, visibleSteps.indexOf(currentStepId));
+  const StepComponent = STEP_COMPONENTS[currentStepId];
 
   const stepLabels: Record<WizardStep, string> = {
+    clientInfo: t('progress.clientInfo'),
+    business: t('progress.business'),
     projectType: t('progress.projectType'),
-    info: t('progress.info'),
-    design: t('progress.design'),
+    products: t('progress.products'),
     features: t('progress.features'),
+    references: t('progress.references'),
     timeline: t('progress.timeline'),
     budget: t('progress.budget'),
-    contact: t('progress.contact'),
     summary: t('progress.summary'),
   };
 
-  async function goTo(index: number, dir: 1 | -1) {
+  function goTo(index: number, dir: 1 | -1) {
     setDirection(dir);
-    setStepIndex(index);
+    setCurrentStepId(visibleSteps[index]);
     setShowStepHint(false);
   }
 
   async function handleNext() {
-    const fields = STEP_FIELDS[currentStep];
+    const fields = STEP_FIELDS[currentStepId];
     const valid = fields.length === 0 || (await methods.trigger(fields));
-    if (valid && stepIndex < WIZARD_STEPS.length - 1) {
+    if (valid && stepIndex < visibleSteps.length - 1) {
       goTo(stepIndex + 1, 1);
     } else if (!valid) {
       setShowStepHint(true);
@@ -105,22 +153,21 @@ export default function RequestProjectWizard() {
   }
 
   function handleEditFromSummary(step: WizardStep) {
-    const index = WIZARD_STEPS.indexOf(step);
-    goTo(index, -1);
+    const index = visibleSteps.indexOf(step);
+    if (index >= 0) goTo(index, -1);
   }
 
-  async function onSubmit(data: RequestProjectInput) {
+  async function onSubmit(data: ContinueProjectInput) {
     setSubmitError(null);
 
     if (data.website) {
-      // honeypot preenchido -> provável bot, finge sucesso e não faz nada
       setSubmitted(true);
       return;
     }
 
     setIsSubmitting(true);
     try {
-      const res = await fetch('/api/request-project', {
+      const res = await fetch('/api/continue-project', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -128,6 +175,11 @@ export default function RequestProjectWizard() {
 
       if (!res.ok) throw new Error('request-failed');
 
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ok deixar o rascunho pra trás nesse caso
+      }
       setSubmitted(true);
     } catch {
       setSubmitError(t('error'));
@@ -137,13 +189,12 @@ export default function RequestProjectWizard() {
   }
 
   if (submitted) {
-    return <SuccessScreen />;
+    return <SuccessScreen clientName={methods.getValues('contactName')} />;
   }
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
-        {/* honeypot anti-spam, escondido para humanos */}
         <input
           type="text"
           tabIndex={-1}
@@ -153,8 +204,8 @@ export default function RequestProjectWizard() {
         />
 
         <StepProgressBar
-          steps={WIZARD_STEPS}
-          currentStep={currentStep}
+          steps={visibleSteps}
+          currentStep={currentStepId}
           labels={stepLabels}
           onStepClick={handleStepClick}
         />
@@ -162,14 +213,14 @@ export default function RequestProjectWizard() {
         <div className="relative mt-8 min-h-[420px] overflow-hidden">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
-              key={currentStep}
+              key={currentStepId}
               custom={direction}
               initial={{ opacity: 0, x: direction * 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction * -24 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              {currentStep === 'summary' ? (
+              {currentStepId === 'summary' ? (
                 <StepSummary onEdit={handleEditFromSummary} isSubmitting={isSubmitting} />
               ) : (
                 <StepComponent />
@@ -185,14 +236,14 @@ export default function RequestProjectWizard() {
           </div>
         )}
 
-        {showStepHint && currentStep !== 'summary' && (
+        {showStepHint && currentStepId !== 'summary' && (
           <p className="mt-4 flex items-center gap-2 text-sm text-red-300">
             <AlertCircle size={15} />
             {t('selectRequired')}
           </p>
         )}
 
-        {currentStep !== 'summary' && (
+        {currentStepId !== 'summary' && (
           <div className="mt-10 flex items-center justify-between">
             <button
               type="button"
@@ -215,7 +266,7 @@ export default function RequestProjectWizard() {
           </div>
         )}
 
-        {currentStep === 'summary' && stepIndex > 0 && (
+        {currentStepId === 'summary' && stepIndex > 0 && (
           <button
             type="button"
             onClick={handleBack}

@@ -7,6 +7,7 @@
     "about": "Sobre mí",
     "skills": "Skills",
     "projects": "Proyectos",
+    "plans": "Planes",
     "contact": "Contacto",
     "cta": "Solicitar Proyecto"
   },
@@ -113,10 +114,19 @@
     "rights": "Todos los derechos reservados."
   },
   "requestProjectCta": {
-    "badge": "Nuevo",
-    "title": "¿Tienes un proyecto en mente?",
-    "subtitle": "Responde un brief rápido y recibiré todo organizado — sin ida y vuelta de mensajes para lo básico.",
-    "cta": "Solicitar Proyecto"
+    "eyebrow": "¿Cómo quieres empezar?",
+    "newClient": {
+      "badge": "Aún no hemos hablado",
+      "title": "Solicita un nuevo proyecto",
+      "subtitle": "Responde un brief rápido y recibiré todo organizado — sin ida y vuelta de mensajes para lo básico.",
+      "cta": "Solicitar proyecto"
+    },
+    "existingClient": {
+      "badge": "Ya hemos hablado",
+      "title": "¿Ya hablamos sobre tu proyecto?",
+      "subtitle": "Continúa donde lo dejamos y envíame los detalles de tu proyecto para que pueda organizar todo antes de los próximos pasos.",
+      "cta": "Continuar proyecto"
+    }
   },
   "requestProject": {
     "eyebrow": "Construyamos tu proyecto",
@@ -276,6 +286,224 @@
     },
     "pdf": {
       "heading": "Brief de Proyecto"
+    }
+  },
+  "plans": {
+    "eyebrow": "Inversión",
+    "title": "Nuestros Planes",
+    "subtitle": "Sitios profesionales hechos para dar resultados — encuentra la solución ideal para tu negocio.",
+    "popular": "Más completo",
+    "from": "Desde",
+    "compareCta": "Comparar planes",
+    "feature": "Recurso",
+    "compareTitle": "Compara los planes",
+    "compareSubtitle": "Mira exactamente qué incluye cada plan antes de decidir.",
+    "requestCta": "Solicitar mi proyecto",
+    "perMonth": "/mes",
+    "items": {
+      "institutional": {
+        "title": "Sitio Institucional",
+        "description": "Presencia profesional online para presentar tu empresa y generar confianza."
+      },
+      "catalog": {
+        "title": "Catálogo Digital",
+        "description": "Muestra tus productos con un catálogo completo, fácil de navegar y actualizar."
+      },
+      "ecommerce-whatsapp": {
+        "title": "E-commerce WhatsApp",
+        "description": "Tienda completa con carrito y finalización de pedido directo por WhatsApp."
+      },
+      "ecommerce-gateway": {
+        "title": "E-commerce Gateway",
+        "description": "Tienda completa con pago online, checkout y área de cliente."
+      }
+    },
+    "rows": {
+      "modernDesign": "Diseño moderno y responsivo",
+      "upToFivePages": "Hasta 5 páginas/secciones",
+      "domainIncluded": "Dominio incluido (1er año)",
+      "homeAboutInfo": "Página de inicio / sobre / información",
+      "whatsappButton": "Botón de WhatsApp",
+      "googleMaps": "Google Maps",
+      "socialIntegration": "Integración con redes sociales",
+      "contactForm": "Formulario de contacto",
+      "productCatalog": "Catálogo de productos",
+      "upToThirtyProducts": "Hasta 30 productos incluidos",
+      "shoppingCart": "Carrito de compras",
+      "whatsappCheckout": "Finalización vía WhatsApp",
+      "clientArea": "Área de cliente",
+      "adminPanel": "Panel administrativo",
+      "productOrderManagement": "Gestión de productos y pedidos",
+      "paymentGateway": "Integración con pasarela de pago",
+      "onlineCheckout": "Checkout online",
+      "paymentStatus": "Estado del pago"
+    },
+    "extras": {
+      "eyebrow": "Personalización",
+      "title": "Extras y adicionales"
+    },
+    "extraItems": {
+      "extraProduct": { "label": "Producto adicional", "value": "S/5 por producto" },
+      "productPackages": { "label": "Paquetes de productos", "value": "+50 productos: S/200 · +100 productos: S/350" },
+      "extraPage": { "label": "Página adicional", "value": "S/60 por página" },
+      "extraFeatures": { "label": "Funcionalidades adicionales", "value": "Bajo presupuesto" }
+    },
+    "maintenance": {
+      "eyebrow": "Soporte continuo",
+      "title": "Mantenimiento opcional"
+    },
+    "maintenanceGroups": {
+      "institutionalCatalog": "Sitio Institucional y Catálogo",
+      "ecommerceWhatsapp": "E-commerce WhatsApp",
+      "ecommerceGateway": "E-commerce Gateway"
+    },
+    "maintenanceTiers": {
+      "essential": "Esencial",
+      "pro": "Pro"
+    },
+    "conditions": {
+      "eyebrow": "Antes de empezar",
+      "title": "Condiciones",
+      "items": [
+        "50% al inicio del proyecto y 50% en la entrega.",
+        "Formas de pago: Yape, Plin, transferencia o método acordado.",
+        "Dominio incluido en el primer año cuando se especifique en el plan.",
+        "La renovación anual del dominio corre por cuenta del cliente.",
+        "Cambios fuera del alcance acordado pueden cobrarse por separado.",
+        "Garantía de 15 días para corrección de errores relacionados con el proyecto entregado.",
+        "Problemas externos de banco, pasarela de pago o proveedor no son responsabilidad directa de Dandy Digital.",
+        "Nuevas funcionalidades solicitadas después de aprobar el alcance pueden generar un presupuesto adicional."
+      ]
+    }
+  },
+  "continueProject": {
+    "eyebrow": "Continuidad de atención",
+    "title": "Continuar Proyecto",
+    "subtitle": "Perfecto. Sigamos donde lo dejamos — completa algunos datos para que entienda exactamente qué necesitas.",
+    "back": "Atrás",
+    "next": "Continuar",
+    "required": "Campo obligatorio",
+    "selectRequired": "Selecciona una opción antes de continuar.",
+    "error": "No pude enviarlo ahora. Intenta de nuevo en unos segundos o escríbeme directo por WhatsApp.",
+    "progress": {
+      "clientInfo": "Tú",
+      "business": "Negocio",
+      "projectType": "Proyecto",
+      "products": "Productos",
+      "features": "Recursos",
+      "references": "Referencias",
+      "timeline": "Plazo",
+      "budget": "Inversión",
+      "summary": "Resumen"
+    },
+    "steps": {
+      "clientInfo": { "title": "¿Cómo puedo llamarte?", "subtitle": "Tus datos de contacto para poder organizar todo correctamente." },
+      "business": { "title": "¿Cuál es el segmento de tu empresa?", "subtitle": "Esto me ayuda a entender mejor tu negocio." },
+      "projectType": { "title": "¿Qué necesitas?", "subtitle": "Elige el tipo de proyecto que más se parezca a lo que tienes en mente." },
+      "products": {
+        "title": "¿Aproximadamente cuántos productos tienes?",
+        "subtitle": "Esto ayuda a dimensionar bien el catálogo.",
+        "notice": "Los catálogos con gran cantidad de productos pueden requerir configuración o presupuesto adicional."
+      },
+      "features": {
+        "title": "¿Qué funcionalidades te gustaría tener?",
+        "subtitle": "Marca todo lo que tenga sentido — se puede ajustar después.",
+        "gatewayQuestion": "¿Qué plataforma o pasarela de pago usas?"
+      },
+      "references": { "title": "¿Tienes alguna referencia?", "subtitle": "Esto me ayuda a entender mejor el estilo que imaginas." },
+      "timeline": { "title": "¿Cuándo te gustaría tener el proyecto listo?", "subtitle": "Esto me ayuda a organizar bien la entrega." },
+      "budget": { "title": "¿Tienes un rango de inversión definido?", "subtitle": "Sin compromiso — este dato es solo para preparar la propuesta correcta." },
+      "summary": {
+        "title": "Revisa la información de tu proyecto",
+        "subtitle": "Puedes editar cualquier parte antes de enviar.",
+        "submit": "Enviar brief",
+        "sending": "Enviando..."
+      }
+    },
+    "fields": {
+      "contactName": "Nombre completo",
+      "companyName": "Nombre de la empresa",
+      "contactWhatsapp": "WhatsApp",
+      "contactEmail": "Correo",
+      "instagram": "Instagram de la empresa",
+      "currentSite": "Sitio actual (si existe)",
+      "businessDescription": "Cuéntame un poco sobre tu empresa",
+      "referenceSite": "¿Tienes algún sitio de referencia?",
+      "desiredStyle": "¿Hay algún estilo que te gustaría que siguiera?",
+      "visualReferences": "Envía referencias visuales o explica qué te gustaría transmitir"
+    },
+    "businessSegments": {
+      "restaurant": "Restaurante",
+      "gym": "Gimnasio",
+      "store": "Tienda",
+      "supplements": "Suplementación",
+      "fashion": "Moda",
+      "services": "Servicios",
+      "freelancer": "Profesional independiente",
+      "other": "Otro"
+    },
+    "projectTypes": {
+      "institutional": "Sitio Institucional",
+      "catalog": "Catálogo Digital",
+      "ecommerce": "E-commerce",
+      "ecommerce-payment": "E-commerce con pago",
+      "landing-page": "Landing Page",
+      "other": "Otro"
+    },
+    "productCounts": {
+      "1-30": "1–30",
+      "31-100": "31–100",
+      "101-300": "101–300",
+      "300-plus": "300+"
+    },
+    "features": {
+      "whatsapp": "WhatsApp",
+      "googleMaps": "Google Maps",
+      "catalog": "Catálogo",
+      "cart": "Carrito",
+      "clientLogin": "Login de clientes",
+      "clientArea": "Área de cliente",
+      "adminPanel": "Panel administrativo",
+      "productManagement": "Gestión de productos",
+      "orderManagement": "Gestión de pedidos",
+      "onlinePayment": "Pago online",
+      "contactForm": "Formulario de contacto",
+      "blog": "Blog",
+      "socialIntegration": "Integración con redes sociales",
+      "other": "Otro"
+    },
+    "paymentGateways": {
+      "mercadopago": "Mercado Pago",
+      "culqi": "Culqi",
+      "niubiz": "Niubiz",
+      "izipay": "Izipay",
+      "other": "Otro",
+      "unsure": "Aún no lo sé"
+    },
+    "timelines": {
+      "asap": "Lo antes posible",
+      "1-2-weeks": "1–2 semanas",
+      "2-4-weeks": "2–4 semanas",
+      "no-deadline": "Sin plazo definido"
+    },
+    "budgets": {
+      "under-700": "Hasta S/700",
+      "700-1000": "S/700 – 1.000",
+      "1000-1500": "S/1.000 – 1.500",
+      "1500-2500": "S/1.500 – 2.500",
+      "over-2500": "Más de S/2.500",
+      "recommendation": "Me gustaría recibir una recomendación"
+    },
+    "summary": {
+      "empty": "Sin respuestas todavía"
+    },
+    "success": {
+      "title": "¡Brief enviado con éxito! 🚀",
+      "subtitle": "Gracias, {name}. Recibí la información de tu proyecto y la analizaré antes de ponerme en contacto contigo.",
+      "whatsappCta": "Escríbeme por WhatsApp"
+    },
+    "pdf": {
+      "heading": "Brief de Continuidad"
     }
   }
 }

@@ -1,23 +1,27 @@
 'use client';
 
 import { Check } from 'lucide-react';
-import { WIZARD_STEPS, type WizardStep } from '@/lib/request-project/schema';
 
-export default function ProgressBar({
+// Barra de progresso genérica, usada pelos wizards "Solicitar Projeto"
+// e "Continuar Projeto". Recebe a lista de etapas de fora — não fica
+// amarrada a um schema específico.
+export default function StepProgressBar<T extends string>({
+  steps,
   currentStep,
   labels,
   onStepClick,
 }: {
-  currentStep: WizardStep;
-  labels: Record<WizardStep, string>;
-  onStepClick: (step: WizardStep, index: number) => void;
+  steps: readonly T[];
+  currentStep: T;
+  labels: Record<T, string>;
+  onStepClick: (step: T, index: number) => void;
 }) {
-  const currentIndex = WIZARD_STEPS.indexOf(currentStep);
+  const currentIndex = steps.indexOf(currentStep);
 
   return (
     <div className="w-full overflow-x-auto pb-2">
       <ol className="flex min-w-max items-center gap-1.5 sm:gap-2">
-        {WIZARD_STEPS.map((step, index) => {
+        {steps.map((step, index) => {
           const isDone = index < currentIndex;
           const isCurrent = index === currentIndex;
           const isClickable = index <= currentIndex;
@@ -49,7 +53,7 @@ export default function ProgressBar({
                 )}
                 <span className="hidden sm:inline">{labels[step]}</span>
               </button>
-              {index < WIZARD_STEPS.length - 1 && (
+              {index < steps.length - 1 && (
                 <span className="h-px w-3 bg-white/10 sm:w-6" aria-hidden />
               )}
             </li>

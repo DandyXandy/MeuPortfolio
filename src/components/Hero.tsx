@@ -1,13 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const badges = ['Java', 'Spring Boot', 'React', 'React Native', 'Next.js', 'PostgreSQL'];
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-ink">
@@ -16,12 +17,12 @@ export default function Hero() {
 
       <motion.div
         className="absolute -left-20 top-24 h-72 w-72 rounded-full bg-azure/20 blur-[100px]"
-        animate={{ y: [0, 30, 0] }}
+        animate={reduceMotion ? undefined : { y: [0, 30, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
         className="absolute -right-16 bottom-16 h-80 w-80 rounded-full bg-magenta/20 blur-[110px]"
-        animate={{ y: [0, -30, 0] }}
+        animate={reduceMotion ? undefined : { y: [0, -30, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
       />
 
@@ -92,7 +93,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        animate={{ y: [0, 10, 0] }}
+        animate={reduceMotion ? undefined : { y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-mist/50"
       >

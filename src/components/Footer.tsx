@@ -1,20 +1,16 @@
 import { useTranslations } from 'next-intl';
 import { MessageCircle, Mail, Linkedin, Github } from 'lucide-react';
-
-const WHATSAPP_NUMBER = '51913056331';
-const EMAIL = 'dandyabadie12@gmail.com';
-const LINKEDIN_URL = 'https://www.linkedin.com/in/dandy-abadie-atoche-32b119336/';
-const GITHUB_URL = 'https://github.com/DandyXandy';
+import { profile, mailtoLink } from '@/data/profile';
 
 export default function Footer() {
   const t = useTranslations('footer');
   const year = new Date().getFullYear();
 
   const socials = [
-    { icon: MessageCircle, href: `https://wa.me/${WHATSAPP_NUMBER}`, label: 'WhatsApp' },
-    { icon: Mail, href: `mailto:${EMAIL}`, label: 'Email' },
-    { icon: Linkedin, href: LINKEDIN_URL, label: 'LinkedIn' },
-    { icon: Github, href: GITHUB_URL, label: 'GitHub' },
+    { icon: MessageCircle, href: `https://wa.me/${profile.whatsappNumber}`, label: 'WhatsApp' },
+    { icon: Mail, href: mailtoLink(), label: 'Email' },
+    { icon: Linkedin, href: profile.linkedinUrl, label: 'LinkedIn' },
+    { icon: Github, href: profile.githubUrl, label: 'GitHub' },
   ];
 
   return (
@@ -39,8 +35,8 @@ export default function Footer() {
           ))}
         </div>
 
-        <p className="text-xs text-mist/40">
-          © {year} Dandy Abadie Atoche. {t('rights')}
+        <p className="text-xs text-mist/60">
+          © {year} {profile.fullName}. {t('rights')}
         </p>
       </div>
     </footer>

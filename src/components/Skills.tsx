@@ -81,7 +81,7 @@ export default function Skills() {
                 <span className="h-3 w-3 rounded-full bg-red-500/70" />
                 <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
                 <span className="h-3 w-3 rounded-full bg-green-500/70" />
-                <span className="ml-2 font-mono text-xs text-mist/40">dandy@portfolio ~ %</span>
+                <span className="ml-2 font-mono text-xs text-mist/60">dandy@portfolio ~ %</span>
               </div>
               <pre className="whitespace-pre-wrap px-5 py-6 font-mono text-[13px] leading-relaxed text-mist/80">
                 {terminalLines.map((line, i) => (

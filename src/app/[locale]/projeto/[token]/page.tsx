@@ -8,8 +8,8 @@ import AosInit from '@/components/AosInit';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { adaptRowToInput, type ProjectBriefingRow } from '@/lib/continue-project/adaptRow';
 import { buildContinueProjectBriefData } from '@/lib/continue-project/buildBriefData';
+import { whatsappLink } from '@/data/profile';
 
-const WHATSAPP_NUMBER = '51913056331';
 const STATUS_VALUES = ['received', 'in_review', 'proposal_sent', 'approved'] as const;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -116,7 +116,7 @@ export default async function ProjectTokenPage({
         <div className="mt-12 flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center">
           <p className="text-sm text-mist/60">{t('helpText')}</p>
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            href={whatsappLink('')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-ink-950 transition-transform hover:scale-105"

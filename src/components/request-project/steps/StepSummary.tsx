@@ -82,7 +82,7 @@ export default function StepSummary({
 
         <SummaryCard title={t('steps.info.title')} onEdit={() => onEdit('info')}>
           {filledInfo.length === 0 ? (
-            <span className="text-mist/40">{t('summary.empty')}</span>
+            <span className="text-mist/60">{t('summary.empty')}</span>
           ) : (
             <ul className="space-y-1">
               {filledInfo.map((field) => (
@@ -101,7 +101,7 @@ export default function StepSummary({
 
         <SummaryCard title={t('steps.features.title')} onEdit={() => onEdit('features')}>
           {(data.features ?? []).length === 0 ? (
-            <span className="text-mist/40">{t('summary.empty')}</span>
+            <span className="text-mist/60">{t('summary.empty')}</span>
           ) : (
             <div className="flex flex-wrap gap-1.5">
               {(data.features ?? []).map((feature) => (

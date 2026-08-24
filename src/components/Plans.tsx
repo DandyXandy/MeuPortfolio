@@ -54,7 +54,7 @@ export default function Plans() {
                   {t(`items.${plan.id}.description`)}
                 </p>
                 <div className="mt-6">
-                  <p className="text-xs uppercase tracking-widest2 text-mist/40">{t('from')}</p>
+                  <p className="text-xs uppercase tracking-widest2 text-mist/60">{t('from')}</p>
                   <p className="font-display text-2xl font-semibold text-mist">
                     {formatSoles(plan.priceFrom)}
                   </p>

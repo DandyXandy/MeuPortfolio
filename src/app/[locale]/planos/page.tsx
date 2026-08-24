@@ -51,7 +51,7 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
                       <p className="font-display text-sm font-semibold text-mist">
                         {t(`items.${plan.id}.title`)}
                       </p>
-                      <p className="mt-1 text-xs font-normal text-mist/40">
+                      <p className="mt-1 text-xs font-normal text-mist/60">
                         {t('from')} {formatSoles(plan.priceFrom)}
                       </p>
                     </th>

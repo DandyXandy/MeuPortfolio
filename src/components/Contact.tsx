@@ -2,11 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { MessageCircle, Mail, Linkedin, Github } from 'lucide-react';
-
-const WHATSAPP_NUMBER = '51913056331';
-const EMAIL = 'dandyabadie12@gmail.com';
-const LINKEDIN_URL = 'https://www.linkedin.com/in/dandy-abadie-atoche-32b119336/';
-const GITHUB_URL = 'https://github.com/DandyXandy';
+import { profile, whatsappLink, mailtoLink } from '@/data/profile';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -15,27 +11,27 @@ export default function Contact() {
     {
       icon: MessageCircle,
       label: 'WhatsApp',
-      value: '+51 913 056 331',
-      href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t('whatsappMessage'))}`,
+      value: profile.whatsappDisplay,
+      href: whatsappLink(t('whatsappMessage')),
       highlight: true,
     },
     {
       icon: Mail,
       label: 'Email',
-      value: EMAIL,
-      href: `mailto:${EMAIL}`,
+      value: profile.email,
+      href: mailtoLink(),
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'dandy-abadie-atoche',
-      href: LINKEDIN_URL,
+      value: profile.linkedinHandle,
+      href: profile.linkedinUrl,
     },
     {
       icon: Github,
       label: 'GitHub',
-      value: 'DandyXandy',
-      href: GITHUB_URL,
+      value: profile.githubHandle,
+      href: profile.githubUrl,
     },
   ];
 
@@ -80,7 +76,7 @@ export default function Contact() {
                 <Icon size={20} />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest2 text-mist/40">{label}</p>
+                <p className="text-xs uppercase tracking-widest2 text-mist/60">{label}</p>
                 <p className="mt-1 font-medium text-mist">{value}</p>
               </div>
             </a>

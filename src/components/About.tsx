@@ -40,7 +40,7 @@ export default function About() {
                 <Icon size={20} />
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest2 text-mist/40">{label}</p>
+                <p className="text-xs uppercase tracking-widest2 text-mist/60">{label}</p>
                 <p className="mt-1 font-display text-lg text-mist">{value}</p>
               </div>
             </div>

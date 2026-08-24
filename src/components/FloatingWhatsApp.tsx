@@ -3,15 +3,14 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
-
-const WHATSAPP_NUMBER = '51913056331';
+import { whatsappLink } from '@/data/profile';
 
 export default function FloatingWhatsApp() {
   const t = useTranslations('contact');
 
   return (
     <motion.a
-      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t('whatsappMessage'))}`}
+      href={whatsappLink(t('whatsappMessage'))}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ opacity: 0, scale: 0.6 }}

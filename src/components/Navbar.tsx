@@ -63,11 +63,12 @@ export default function Navbar() {
         </div>
 
         <button
-          className="text-mist lg:hidden"
+          className="-mr-2.5 flex h-11 w-11 items-center justify-center text-mist lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
         >
-          {open ? <X size={26} /> : <Menu size={26} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 

@@ -40,7 +40,7 @@ SUPABASE_URL="..."
 SUPABASE_SERVICE_ROLE_KEY="..."
 RESEND_API_KEY="..."
 RESEND_FROM_EMAIL="Dandy Abadie <onboarding@resend.dev>"
-NOTIFICATION_EMAIL="dandyabadie12@gmail.com"
+NOTIFICATION_EMAIL="dandyalexandre7@gmail.com"
 ```
 
 Na Vercel, adicione essas mesmas variáveis em **Settings →

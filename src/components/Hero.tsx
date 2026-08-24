@@ -2,7 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Github, Linkedin } from 'lucide-react';
+import { profile } from '@/data/profile';
 
 const badges = ['Java', 'Spring Boot', 'React', 'React Native', 'Next.js', 'PostgreSQL'];
 
@@ -40,26 +41,35 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15 }}
-          className="font-display text-4xl font-semibold leading-tight text-mist sm:text-5xl md:text-6xl lg:text-7xl"
+          className="text-aurora-gradient font-display text-5xl font-semibold leading-tight sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          {t('headlinePre')}{' '}
-          <span className="text-aurora-gradient">{t('headlineName')}</span>
+          {t('headlineName')}
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3 }}
-          className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-mist/70 sm:text-lg"
+          className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-mist/70 sm:text-lg"
         >
-          {t('subheadline')}
+          {t('tagline')}
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.4 }}
+          className="mx-auto mt-4 flex max-w-xl items-center justify-center gap-2 text-sm text-mist/50"
+        >
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet-light" aria-hidden="true" />
+          {t('availability')}
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.45 }}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <a
             href="#projetos"
@@ -68,10 +78,44 @@ export default function Hero() {
             {t('ctaPrimary')}
           </a>
           <a
-            href="#contato"
+            href={profile.cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold text-mist transition-colors hover:border-violet-light hover:text-violet-light sm:w-auto"
           >
             {t('ctaSecondary')}
+          </a>
+          <a
+            href="#contato"
+            className="w-full px-4 py-3.5 text-sm font-semibold text-mist/70 transition-colors hover:text-mist sm:w-auto"
+          >
+            {t('ctaTertiary')}
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.55 }}
+          className="mt-6 flex items-center justify-center gap-3"
+        >
+          <a
+            href={profile.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-mist/60 transition-colors hover:border-violet-light/40 hover:text-violet-light"
+          >
+            <Github size={16} />
+          </a>
+          <a
+            href={profile.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-mist/60 transition-colors hover:border-violet-light/40 hover:text-violet-light"
+          >
+            <Linkedin size={16} />
           </a>
         </motion.div>
 
@@ -79,7 +123,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.65 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-3"
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           {badges.map((badge) => (
             <span

@@ -7,30 +7,43 @@
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
-    "plans": "Plans",
+    "plans": "Services",
     "contact": "Contact",
-    "cta": "Request a Project"
+    "cta": "Request a Project",
+    "cv": "CV",
+    "github": "GitHub"
   },
   "hero": {
     "eyebrow": "Full-Stack Developer",
-    "headlinePre": "Hi, I'm",
     "headlineName": "Dandy Abadie",
-    "subheadline": "Brazilian full-stack developer, currently based in Peru. I turn ideas into fast, good-looking products that solve real problems.",
+    "tagline": "Systems Engineering student (7th semester), building real digital products — from frontend to deploy.",
+    "availability": "Open to internships, junior roles, and freelance projects.",
     "ctaPrimary": "View projects",
-    "ctaSecondary": "Get in touch",
+    "ctaSecondary": "Download CV",
+    "ctaTertiary": "Get in touch",
     "scroll": "Scroll down"
   },
   "about": {
     "eyebrow": "About me",
-    "title": "A bit of my story",
-    "paragraph1": "I'm from Brazil, currently living in Peru, where I study Systems Engineering at Universidad Tecnológica del Perú. I've always been the type who learns on my own — besides university, I study by myself every day because growth doesn't have an expiration date.",
-    "paragraph2": "I love turning ideas into real products: from online stores to personal-organization apps. Every new project is an excuse to learn a different technology.",
-    "originLabel": "Where I'm from",
-    "originValue": "Brazil → Peru",
-    "studyLabel": "Education",
-    "studyValue": "Systems Eng. — UTP",
-    "driveLabel": "What drives me",
-    "driveValue": "Learning every day"
+    "title": "Student, builder, engineer.",
+    "paragraph": "Brazilian living in Peru, self-taught — beyond university, I study new technologies on my own every day.",
+    "stats": {
+      "university": { "label": "University", "value": "UTP — Systems Eng." },
+      "cycle": { "label": "Current semester", "value": "7th semester" },
+      "location": { "label": "Location", "value": "Piura, Peru" },
+      "languages": { "label": "Languages", "value": "ES/PT native · EN basic" },
+      "focus": { "label": "Focus", "value": "Full-Stack Development" }
+    },
+    "softSkills": ["Fast learner", "Team collaboration", "Communication"]
+  },
+  "currently": {
+    "eyebrow": "Now",
+    "title": "What I'm doing now",
+    "items": [
+      "7th semester — Systems Engineering (UTP)",
+      "Building full-stack products",
+      "Open to internships, junior roles, and freelance"
+    ]
   },
   "venture": {
     "badge": "My own venture",

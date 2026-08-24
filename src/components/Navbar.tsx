@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Github, FileDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { profile } from '@/data/profile';
 import LocaleSwitcher from './LocaleSwitcher';
 
 export default function Navbar() {
@@ -19,10 +20,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Sigue el mismo orden de la Home: proyectos primero (prueba técnica),
+  // la parte comercial (Servicios) casi al final.
   const links = [
+    { href: '#projetos', label: t('projects') },
     { href: '#sobre', label: t('about') },
     { href: '#skills', label: t('skills') },
-    { href: '#projetos', label: t('projects') },
     { href: '#planos', label: t('plans') },
     { href: '#contato', label: t('contact') },
   ];
@@ -40,7 +43,7 @@ export default function Navbar() {
           DANDY<span className="text-aurora-gradient">.DEV</span>
         </Link>
 
-        <div className="hidden items-center gap-10 lg:flex">
+        <div className="hidden items-center gap-9 lg:flex">
           {links.map((link) => (
             <a
               key={link.href}
@@ -52,7 +55,25 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
+          <a
+            href={profile.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-mist/60 transition-colors hover:text-mist"
+          >
+            <Github size={17} />
+          </a>
+          <a
+            href={profile.cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-mist/80 transition-colors hover:border-violet-light/40 hover:text-mist"
+          >
+            <FileDown size={14} />
+            {t('cv')}
+          </a>
           <LocaleSwitcher />
           <Link
             href="/solicitar-projeto"
@@ -91,6 +112,26 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href={profile.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 text-lg text-mist/80 hover:text-mist"
+              >
+                <FileDown size={18} />
+                {t('cv')}
+              </a>
+              <a
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 text-lg text-mist/80 hover:text-mist"
+              >
+                <Github size={18} />
+                {t('github')}
+              </a>
               <div className="flex items-center justify-between pt-2">
                 <LocaleSwitcher />
                 <Link

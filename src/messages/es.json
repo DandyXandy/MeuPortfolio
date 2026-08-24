@@ -7,30 +7,43 @@
     "about": "Sobre mí",
     "skills": "Skills",
     "projects": "Proyectos",
-    "plans": "Planes",
+    "plans": "Servicios",
     "contact": "Contacto",
-    "cta": "Solicitar Proyecto"
+    "cta": "Solicitar Proyecto",
+    "cv": "CV",
+    "github": "GitHub"
   },
   "hero": {
     "eyebrow": "Full-Stack Developer",
-    "headlinePre": "Hola, soy",
     "headlineName": "Dandy Abadie",
-    "subheadline": "Desarrollador full-stack brasileño, actualmente radicado en Perú. Convierto ideas en productos rápidos, bonitos y que resuelven problemas reales.",
+    "tagline": "Estudiante de Ingeniería de Sistemas (7.º ciclo), construyendo productos digitales reales — del frontend al deploy.",
+    "availability": "Disponible para prácticas, puestos junior y proyectos freelance.",
     "ctaPrimary": "Ver proyectos",
-    "ctaSecondary": "Hablemos",
+    "ctaSecondary": "Descargar CV",
+    "ctaTertiary": "Hablemos",
     "scroll": "Desliza hacia abajo"
   },
   "about": {
     "eyebrow": "Sobre mí",
-    "title": "Un poco de mi historia",
-    "paragraph1": "Soy de Brasil, actualmente vivo en Perú, donde estudio Ingeniería de Sistemas en la Universidad Tecnológica del Perú. Siempre me gustó aprender por mi cuenta — además de la universidad, estudio solo todos los días porque creo que la evolución no tiene fecha de vencimiento.",
-    "paragraph2": "Me encanta transformar ideas en productos reales: desde tiendas online hasta apps de organización personal. Cada proyecto nuevo es una excusa para aprender una tecnología distinta.",
-    "originLabel": "De dónde vengo",
-    "originValue": "Brasil → Perú",
-    "studyLabel": "Formación",
-    "studyValue": "Ing. de Sistemas — UTP",
-    "driveLabel": "Lo que me mueve",
-    "driveValue": "Aprender cada día"
+    "title": "Estudiante, builder, ingeniero.",
+    "paragraph": "Brasileño viviendo en Perú, autodidacta — además de la universidad, estudio nuevas tecnologías por mi cuenta todos los días.",
+    "stats": {
+      "university": { "label": "Universidad", "value": "UTP — Ing. de Sistemas" },
+      "cycle": { "label": "Ciclo actual", "value": "7.º ciclo" },
+      "location": { "label": "Ubicación", "value": "Piura, Perú" },
+      "languages": { "label": "Idiomas", "value": "ES/PT nativo · EN básico" },
+      "focus": { "label": "Enfoque", "value": "Full-Stack Development" }
+    },
+    "softSkills": ["Aprendizaje rápido", "Trabajo en equipo", "Comunicación"]
+  },
+  "currently": {
+    "eyebrow": "Ahora",
+    "title": "Qué estoy haciendo ahora",
+    "items": [
+      "7.º ciclo — Ingeniería de Sistemas (UTP)",
+      "Construyendo productos full-stack",
+      "Abierto a prácticas, puestos junior y freelance"
+    ]
   },
   "venture": {
     "badge": "Mi propia marca",

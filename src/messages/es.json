@@ -34,7 +34,9 @@
       "languages": { "label": "Idiomas", "value": "ES/PT nativo · EN básico" },
       "focus": { "label": "Enfoque", "value": "Full-Stack Development" }
     },
-    "softSkills": ["Aprendizaje rápido", "Trabajo en equipo", "Comunicación"]
+    "softSkills": ["Aprendizaje rápido", "Trabajo en equipo", "Comunicación"],
+    "coursesLabel": "Cursos",
+    "courses": ["Java (POO) — Udemy", "Java (De Cero a Profesional) — Udemy"]
   },
   "currently": {
     "eyebrow": "Ahora",

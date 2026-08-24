@@ -53,7 +53,14 @@ No secrets are recorded in this file.
   - Café Productions' `engineeringDecisions` is an empty array (nothing beyond what's already confirmed) — the page hides that section entirely when empty rather than showing a blank heading.
 - **Verified**: `npm run build` clean; ran the dev server and inspected `/pt/projects/ironmind`, `/en/projects/dandy-portfolio`, `/es/projects/cafe-productions` directly — correct content, correct conditional hiding (no GitHub button/section where there's no data), correct year/tags. Confirmed via `next/image` request inspection that featured cards route through Next's image optimizer (`/_next/image?url=...microlink...`) while the 10 "other" cards still hit Microlink directly, as intended. Counted DOM elements to confirm exactly 3 "View case study" links and 11 GitHub icon buttons render (1 featured + 10 others — matches the data).
 
-## FASE 4–9
+## FASE 4 — Professional proof ✅
+
+Most of this phase was already covered incidentally by Fase 2 (`About.tsx`'s fact grid already surfaces University/Cycle/Location/Languages, and `Currently.tsx` already covers the "currently building / open to opportunities" block, and the CV button was already wired in the Hero/Navbar). The only real gap was **courses/certifications**, which didn't appear anywhere on the site yet.
+
+- **`About.tsx`**: added a compact "Courses" pill row (same visual pattern as the soft-skills pills) right below soft skills — the 2 confirmed Udemy Java courses, shortened to fit a pill (`Java (POO) — Udemy`, `Java (Do Zero ao Profissional) — Udemy`), with a small uppercase caption above. Deliberately not a new full section — keeps the "not a CV rendered as a website" instruction intact.
+- **Verified**: `npm run build` clean; confirmed both course pills render correctly on `/pt`; confirmed no mobile overflow at 375px.
+
+## FASE 5–9
 
 Not started yet — picking up next.
 

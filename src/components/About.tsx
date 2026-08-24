@@ -15,6 +15,7 @@ export default function About() {
   ];
 
   const softSkills = t.raw('softSkills') as string[];
+  const courses = t.raw('courses') as string[];
 
   return (
     <section id="sobre" className="relative bg-ink py-28">
@@ -61,6 +62,22 @@ export default function About() {
               {skill}
             </span>
           ))}
+        </div>
+
+        <div className="mt-8 text-center" data-aos="fade-up" data-aos-delay="200">
+          <p className="mb-3 text-[11px] uppercase tracking-widest2 text-mist/50">
+            {t('coursesLabel')}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            {courses.map((course) => (
+              <span
+                key={course}
+                className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-mono text-[11px] text-mist/60"
+              >
+                {course}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

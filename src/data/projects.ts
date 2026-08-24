@@ -17,8 +17,16 @@
 //               (ex: "meu-novo-site")
 //   url      -> o link do site já publicado (com https://)
 //   tags     -> lista de tecnologias usadas, aparecem como badges
-//   featured -> true deixa o card com borda brilhante e destaque
-//               (use só para 1 projeto especial por vez)
+//   year     -> ano em que foi construído (aparece no card)
+//   featured -> true faz o projeto entrar na seção "Featured" (com
+//               case study próprio) em vez da grade "Outros projetos".
+//               Só marque true se também criar o case study
+//               correspondente em src/data/case-studies/.
+//   caseStudy -> slug da página de case study (só projetos featured),
+//               tem que bater com o arquivo em src/data/case-studies/
+//   github   -> link do repositório, só preencha se o repo for público
+//               de verdade — se não tiver, deixe undefined (o botão
+//               "Ver código" simplesmente não aparece, sem link quebrado)
 //
 // PASSO 3 — abra os 3 arquivos de tradução:
 //   src/messages/pt.json
@@ -42,7 +50,10 @@ export type Project = {
   id: string;
   url: string;
   tags: string[];
+  year: number;
   featured?: boolean;
+  caseStudy?: string;
+  github?: string;
 };
 
 export const projects: Project[] = [
@@ -50,64 +61,108 @@ export const projects: Project[] = [
     id: 'ironmind',
     url: 'https://ironmind-ivory.vercel.app/',
     tags: ['Next.js', 'Prisma', 'PostgreSQL', 'NextAuth'],
+    year: 2026,
+    featured: true,
+    caseStudy: 'ironmind',
+    github: 'https://github.com/DandyXandy/IRONMIND',
+  },
+  {
+    id: 'cafe-productions',
+    url: 'https://cafe-frontend-five-rust.vercel.app/',
+    // Stack real confirmado por Dandy (coincide con su CV): React en el
+    // frontend, Java Spring Boot en el backend — no Next.js/Framer Motion
+    // como decían las tags viejas, eso era un dato incorrecto.
+    tags: ['React', 'Java', 'Spring Boot'],
+    year: 2025,
+    featured: true,
+    caseStudy: 'cafe-productions',
+    // Sin repo local encontrado en esta máquina — sin botón "Ver código"
+    // hasta que Dandy indique dónde está.
+  },
+  {
+    id: 'dandy-portfolio',
+    url: 'https://portfoliodandy.com/',
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase'],
+    year: 2026,
+    featured: true,
+    caseStudy: 'dandy-portfolio',
+    // github pendiente: MeuPortfolio no estaba en la lista de repos que
+    // Dandy confirmó como públicos — no se agrega el link sin confirmar.
   },
   {
     id: 'brutal-labs',
     url: 'https://brutal-labs.vercel.app/',
     tags: ['Next.js', 'Tailwind', 'E-commerce'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/brutalLabs',
   },
   {
     id: 'aurum-residences',
     url: 'https://aurum-residences-liart.vercel.app/pt',
     tags: ['Next.js', 'Framer Motion', 'next-intl'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/aurum-residences',
   },
   {
     id: 'meridian-capital',
     url: 'https://meridian-capital-eta.vercel.app/pt',
     tags: ['Next.js', 'Framer Motion', 'next-intl'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/meridian-capital',
   },
   {
     id: 'apex-mastermind',
     url: 'https://apex-mastermin.vercel.app/',
     tags: ['Next.js', 'Landing Page', 'AOS'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/Apex-Mastermin',
   },
   {
     id: 'raiz-blog',
     url: 'https://blog-beta-seven-71.vercel.app/pt',
     tags: ['Next.js', 'Blog', 'next-intl'],
-  },
-  {
-    id: 'cafe-productions',
-    url: 'https://cafe-frontend-five-rust.vercel.app/',
-    tags: ['Next.js', 'Framer Motion', 'Community'],
-    featured: true,
+    year: 2026,
+    github: 'https://github.com/DandyXandy/blog',
   },
   {
     id: 'ag-store',
     url: 'https://agstoreofc.vercel.app/',
     tags: ['React', 'Vite', 'E-commerce'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/A-G-Store',
   },
   {
     id: 'sidma',
     url: 'https://sidma-monitoramento.vercel.app/',
     tags: ['Node.js', 'Express', 'PostgreSQL'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/sidma-monitoramento',
   },
   {
     id: 'gym-forja',
     url: 'https://gymforja.vercel.app/',
     tags: ['Node.js', 'Express', 'E-commerce'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/exemplo-pagina-para-academia',
   },
   {
     id: 'raiz-latina',
     url: 'https://paginaraizlatina.vercel.app/',
     tags: ['Node.js', 'Express', 'PostgreSQL'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/Site-Ra-z-Latina',
   },
   {
     id: 'loja-modelo',
     url: 'https://ejemplo-tienda-ecommerce.vercel.app/',
     tags: ['Node.js', 'Express', 'PostgreSQL'],
+    year: 2026,
+    github: 'https://github.com/DandyXandy/ejemplo-tienda-ecommerce',
   },
 
   // --- exemplo (apague o comentário e preencha para usar) ---------
-  // { id: 'meu-novo-site', url: 'https://meu-novo-site.vercel.app/', tags: ['Next.js'], featured: false },
+  // { id: 'meu-novo-site', url: 'https://meu-novo-site.vercel.app/', tags: ['Next.js'], year: 2026, featured: false },
 ];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+export const otherProjects = projects.filter((p) => !p.featured);

@@ -65,10 +65,18 @@
     "title": "Projects",
     "subtitle": "Sites I've built — from e-commerce to corporate, each one solving a different problem.",
     "featured": "Featured",
+    "otherLabel": "More projects",
+    "viewCaseStudy": "View case study",
+    "viewLive": "View live",
+    "viewCode": "View code",
     "items": {
       "ironmind": {
         "title": "IronMind",
         "description": "Oversized clothing online store with cart, WhatsApp checkout, and a full admin dashboard."
+      },
+      "dandy-portfolio": {
+        "title": "Dandy Portfolio",
+        "description": "The very site you're looking at right now — Next.js 16, i18n, Supabase, and PDF generation, all built from scratch."
       },
       "brutal-labs": {
         "title": "Brutal Labs",
@@ -114,6 +122,81 @@
         "title": "Store Template",
         "description": "Full e-commerce template used as a base to quickly set up online stores."
       }
+    }
+  },
+  "caseStudy": {
+    "backToProjects": "Back to projects",
+    "role": "My role",
+    "roleValue": "Solo full-stack developer",
+    "year": "Year",
+    "problem": "The problem",
+    "solution": "The solution",
+    "responsibilities": "My responsibilities",
+    "stack": "Tech stack",
+    "architecture": "Architecture",
+    "keyFeatures": "Key features",
+    "engineeringDecisions": "Engineering decisions",
+    "challenges": "Challenges",
+    "challengesPending": "Still writing up the real technical challenges from this project.",
+    "whatLearned": "What I learned",
+    "whatLearnedPending": "Still writing up the specific takeaways from this project.",
+    "viewLive": "View live site",
+    "viewCode": "View code on GitHub",
+    "notFound": {
+      "title": "Case study not found",
+      "backHome": "Back home"
+    }
+  },
+  "caseStudies": {
+    "ironmind": {
+      "overview": "A full online store for oversized clothing — shopping cart, WhatsApp checkout, and a working admin dashboard, built from scratch: from the database to deployment.",
+      "problem": "I wanted to build a real full-stack application, not a sample CRUD: real authentication, role-based access control, a complete purchase flow, and an admin dashboard someone would actually use day to day.",
+      "solution": "Next.js 14 (App Router) with TypeScript across the frontend and API routes, Prisma as the ORM over PostgreSQL, and NextAuth handling authentication with two roles — customer and admin — gating access to the dashboard.",
+      "responsibilities": "I designed the data model (products, orders, users, reviews), implemented authentication and access control, built the cart and WhatsApp checkout, and put together the admin dashboard — products, orders, and review moderation.",
+      "architecture": "Next.js serves as both the frontend and the API layer; Prisma connects the API routes to a PostgreSQL database; NextAuth manages session and user role in parallel; product images upload to Vercel Blob.",
+      "keyFeatures": [
+        "Two-role authentication (customer/admin) via NextAuth",
+        "Admin dashboard: products, orders, and order status",
+        "Review system with manual approval before going live",
+        "Shopping cart and WhatsApp-confirmed checkout",
+        "Technical SEO: sitemap.xml and robots.txt generated natively by Next.js"
+      ],
+      "engineeringDecisions": [
+        "Prisma over raw SQL, for versioned migrations and automatic schema typing",
+        "User role loaded straight into the NextAuth session token, no extra database lookup on every request",
+        "Reviews start as pending and only go live once approved in the dashboard — filters public spam without needing real-time moderation"
+      ]
+    },
+    "cafe-productions": {
+      "overview": "A corporate site for a Brazilian creative studio working in voice acting, games, and visual arts, with an admin dashboard to manage content.",
+      "problem": "The studio needed a site with a strong visual identity and a simple way to update content without touching code.",
+      "solution": "A React frontend consuming a custom API built in Java with Spring Boot, with a focus on data security on the backend.",
+      "responsibilities": "I built the React frontend and the admin area that lets the studio add, edit, and delete site content.",
+      "architecture": "The React frontend consumes a custom REST API built in Spring Boot, responsible for authentication and the admin dashboard's operations.",
+      "keyFeatures": [
+        "Admin dashboard for content management (add, edit, delete)",
+        "Custom Java/Spring Boot backend, focused on data security"
+      ],
+      "engineeringDecisions": []
+    },
+    "dandy-portfolio": {
+      "overview": "The portfolio you're looking at right now isn't a static site — it's a full-stack application: multilingual, with lead capture, PDF generation, and database integration.",
+      "problem": "I needed a portfolio that would also work as technical proof on its own — not just list projects, but actually demonstrate architecture, i18n, backend integration, and deployment in practice.",
+      "solution": "Next.js 16 with the App Router and React 19, strict TypeScript, internationalization with next-intl (Portuguese, Spanish, and English), Supabase as the backend for the quote-request forms, and on-demand PDF generation with @react-pdf/renderer.",
+      "responsibilities": "I designed and built the entire site solo: architecture, design system, both lead-capture wizards, PDF generation, the translation system, and deployment on Vercel with a custom domain.",
+      "architecture": "Next.js App Router with its own API routes; forms use React Hook Form + Zod, with the same schema validated on both client and server; the API routes write to Supabase, generate a PDF of the brief, and trigger emails via Resend.",
+      "keyFeatures": [
+        "Multilingual site (PT/ES/EN) with next-intl, including per-locale routes and metadata",
+        "Two multi-step lead-capture wizards, with shared client/server validation via Zod",
+        "On-demand PDF generation from every submitted brief",
+        "Token-based, private project status page — no login required",
+        "Custom domain with continuous deployment on Vercel"
+      ],
+      "engineeringDecisions": [
+        "Zod as the single source of validation, shared between the form (client) and the API route (server), so they can never drift out of sync",
+        "A simple honeypot field on the forms to filter bots without needing a captcha",
+        "Supabase's service role key confined strictly to the server, never exposed to the browser"
+      ]
     }
   },
   "contact": {

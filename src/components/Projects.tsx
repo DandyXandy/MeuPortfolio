@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { projects } from '@/data/projects';
+import { featuredProjects, otherProjects } from '@/data/projects';
+import FeaturedProjectCard from './FeaturedProjectCard';
 import ProjectCard from './ProjectCard';
 
 export default function Projects() {
@@ -21,13 +22,35 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard
+          {featuredProjects.map((project) => (
+            <FeaturedProjectCard
               key={project.id}
               project={project}
               title={t(`items.${project.id}.title`)}
               description={t(`items.${project.id}.description`)}
               featuredLabel={t('featured')}
+              caseStudyLabel={t('viewCaseStudy')}
+              viewLiveLabel={t('viewLive')}
+              viewCodeLabel={t('viewCode')}
+            />
+          ))}
+        </div>
+
+        <p
+          className="mb-8 mt-20 text-xs font-semibold uppercase tracking-widest2 text-mist/50"
+          data-aos="fade-up"
+        >
+          {t('otherLabel')}
+        </p>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {otherProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              title={t(`items.${project.id}.title`)}
+              description={t(`items.${project.id}.description`)}
+              viewCodeLabel={t('viewCode')}
             />
           ))}
         </div>

@@ -65,10 +65,18 @@
     "title": "Proyectos",
     "subtitle": "Sitios que ya desarrollé — desde e-commerce hasta institucional, cada uno resolviendo un problema distinto.",
     "featured": "Destacado",
+    "otherLabel": "Más proyectos",
+    "viewCaseStudy": "Ver case study",
+    "viewLive": "Ver sitio",
+    "viewCode": "Ver código",
     "items": {
       "ironmind": {
         "title": "IronMind",
         "description": "Tienda online de ropa oversize, con carrito, checkout por WhatsApp y panel administrativo completo."
+      },
+      "dandy-portfolio": {
+        "title": "Dandy Portfolio",
+        "description": "El propio sitio que estás viendo ahora — Next.js 16, i18n, Supabase y generación de PDF, todo construido desde cero."
       },
       "brutal-labs": {
         "title": "Brutal Labs",
@@ -114,6 +122,81 @@
         "title": "Tienda Modelo",
         "description": "Plantilla de e-commerce completa, usada como base para armar tiendas online rápidamente."
       }
+    }
+  },
+  "caseStudy": {
+    "backToProjects": "Volver a proyectos",
+    "role": "Mi rol",
+    "roleValue": "Desarrollador full-stack (solo)",
+    "year": "Año",
+    "problem": "El problema",
+    "solution": "La solución",
+    "responsibilities": "Mi responsabilidad",
+    "stack": "Stack técnico",
+    "architecture": "Arquitectura",
+    "keyFeatures": "Funcionalidades principales",
+    "engineeringDecisions": "Decisiones técnicas",
+    "challenges": "Desafíos",
+    "challengesPending": "Todavía voy a detallar los desafíos técnicos reales de este proyecto.",
+    "whatLearned": "Qué aprendí",
+    "whatLearnedPending": "Todavía voy a detallar los aprendizajes específicos de este proyecto.",
+    "viewLive": "Ver sitio en vivo",
+    "viewCode": "Ver código en GitHub",
+    "notFound": {
+      "title": "Case study no encontrado",
+      "backHome": "Volver al inicio"
+    }
+  },
+  "caseStudies": {
+    "ironmind": {
+      "overview": "Tienda online completa de ropa oversize — carrito de compras, checkout vía WhatsApp y un panel administrativo funcional, construido desde cero: de la base de datos al deploy.",
+      "problem": "Quería construir una aplicación full-stack de verdad, no un CRUD de ejemplo: con autenticación real, control de acceso por rol de usuario, un flujo de compra completo y un panel administrativo que alguien realmente usaría en el día a día.",
+      "solution": "Next.js 14 (App Router) con TypeScript en el frontend y en las rutas de API, Prisma como ORM sobre PostgreSQL, y NextAuth manejando la autenticación con dos roles — cliente y administrador — controlando el acceso al panel.",
+      "responsibilities": "Diseñé el modelo de datos (productos, pedidos, usuarios, reseñas), implementé autenticación y control de acceso, construí el carrito y el checkout vía WhatsApp, y armé el panel administrativo — productos, pedidos y moderación de reseñas.",
+      "architecture": "Next.js funciona como frontend y como capa de API; Prisma conecta las rutas de API a una base PostgreSQL; NextAuth gestiona sesión y rol del usuario en paralelo; las imágenes de producto se suben a Vercel Blob.",
+      "keyFeatures": [
+        "Autenticación con dos roles (cliente/administrador) vía NextAuth",
+        "Panel administrativo: productos, pedidos y estado del pedido",
+        "Sistema de reseñas con aprobación manual antes de publicarse",
+        "Carrito de compras y checkout con confirmación vía WhatsApp",
+        "SEO técnico: sitemap.xml y robots.txt generados por el propio Next.js"
+      ],
+      "engineeringDecisions": [
+        "Prisma como ORM en vez de SQL puro, para migraciones versionadas y tipado automático del schema",
+        "El rol del usuario se carga directo en el token de sesión de NextAuth, sin consulta extra a la base en cada request",
+        "Las reseñas entran como pendientes y solo aparecen en el sitio tras ser aprobadas en el panel — evita spam público sin necesitar moderación en tiempo real"
+      ]
+    },
+    "cafe-productions": {
+      "overview": "Sitio institucional para un estudio creativo brasileño de doblaje, videojuegos y artes visuales, con un panel administrativo para gestionar el contenido.",
+      "problem": "El estudio necesitaba un sitio con identidad visual fuerte y una forma simple de actualizar el contenido sin depender de tocar código.",
+      "solution": "Frontend en React consumiendo una API propia en Java con Spring Boot, con foco en la seguridad de los datos en el backend.",
+      "responsibilities": "Desarrollé el frontend en React y el área administrativa que permite agregar, editar y eliminar contenido del sitio.",
+      "architecture": "El frontend en React consume una API REST propia construida en Spring Boot, responsable de la autenticación y de las operaciones del panel administrativo.",
+      "keyFeatures": [
+        "Panel administrativo para gestión de contenido (agregar, editar, eliminar)",
+        "Backend propio en Java/Spring Boot, con foco en la seguridad de los datos"
+      ],
+      "engineeringDecisions": []
+    },
+    "dandy-portfolio": {
+      "overview": "El portafolio que estás viendo ahora no es un sitio estático — es una aplicación full-stack completa: multilenguaje, con captación de leads, generación de PDF e integración con base de datos.",
+      "problem": "Necesitaba un portafolio que también funcionara como prueba técnica en sí mismo — no solo listar proyectos, sino demostrar arquitectura, i18n, integración de backend y deploy en la práctica.",
+      "solution": "Next.js 16 con App Router y React 19, TypeScript en modo estricto, internacionalización con next-intl (portugués, español e inglés), Supabase como backend de los formularios de cotización, y generación de PDF bajo demanda con @react-pdf/renderer.",
+      "responsibilities": "Diseñé y construí todo el sitio yo solo: arquitectura, sistema de diseño, los dos wizards de captación de leads, la generación de PDF, el sistema de traducciones y el deploy en Vercel con dominio propio.",
+      "architecture": "Next.js App Router con rutas de API propias; los formularios usan React Hook Form + Zod, con el mismo schema validado en cliente y servidor; las rutas de API guardan en Supabase, generan un PDF del briefing y disparan correos vía Resend.",
+      "keyFeatures": [
+        "Sitio multilenguaje (PT/ES/EN) con next-intl, incluyendo rutas y metadata por idioma",
+        "Dos wizards multi-paso de captación de leads, con validación compartida cliente/servidor vía Zod",
+        "Generación de PDF bajo demanda a partir de cada briefing enviado",
+        "Página de estado de proyecto por token, privada y sin necesidad de login",
+        "Dominio propio con deploy continuo en Vercel"
+      ],
+      "engineeringDecisions": [
+        "Zod como única fuente de validación, compartida entre el formulario (cliente) y la ruta de API (servidor), para que nunca queden desincronizados",
+        "Honeypot simple en los formularios para filtrar bots sin necesitar captcha",
+        "Service role key de Supabase confinada solo al servidor, nunca expuesta al navegador"
+      ]
     }
   },
   "contact": {

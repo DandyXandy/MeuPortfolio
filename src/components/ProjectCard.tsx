@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ExternalLink, Sparkles } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import { getScreenshotUrl } from '@/lib/screenshot';
 import type { Project } from '@/data/projects';
 
@@ -9,30 +9,40 @@ export default function ProjectCard({
   project,
   title,
   description,
-  featuredLabel,
+  viewCodeLabel,
 }: {
   project: Project;
   title: string;
   description: string;
-  featuredLabel: string;
+  viewCodeLabel: string;
 }) {
   const [imageFailed, setImageFailed] = useState(false);
 
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div
       data-aos="fade-up"
-      className={`card-glow group relative flex flex-col overflow-hidden rounded-2xl border bg-white/[0.03] transition-transform hover:-translate-y-1.5 ${
-        project.featured ? 'border-violet-light/40' : 'border-white/10'
-      }`}
+      className="card-glow group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-transform hover:-translate-y-1.5"
     >
-      {project.featured && (
-        <span className="absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-aurora-gradient px-3 py-1 text-[11px] font-semibold text-white shadow-lg shadow-violet/30">
-          <Sparkles size={12} />
-          {featuredLabel}
-        </span>
+      {/* Enlace que cubre toda la card (patrón "stretched link") — el
+          ícono de GitHub, aparte, queda por encima para ser clickeable. */}
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={title}
+        className="absolute inset-0 z-0"
+      />
+
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={viewCodeLabel}
+          className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-ink-950/70 text-mist/60 backdrop-blur-sm transition-colors hover:text-violet-light"
+        >
+          <Github size={14} />
+        </a>
       )}
 
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink-800">
@@ -73,6 +83,6 @@ export default function ProjectCard({
           ))}
         </div>
       </div>
-    </a>
+    </div>
   );
 }

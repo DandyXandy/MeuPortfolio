@@ -39,9 +39,32 @@ No secrets are recorded in this file.
 - Removed `Venture.tsx` (dead code — its rendering now lives inside `Currently.tsx`, nothing was dropped, just de-duplicated).
 - **Verified**: `npm run build` clean (TypeScript strict passes); ran the actual dev server and inspected the rendered DOM for `/pt`, `/es`, `/en` — correct copy, correct order, no missing-translation errors, no console errors from the app itself (the two WebSocket HMR warnings seen are a limitation of this sandboxed preview proxy, not an app issue — confirmed zero server-side errors in the dev server's own logs). Checked mobile (375px): no horizontal overflow, mobile menu shows the new CV/GitHub links, 44×44 touch target holds.
 
-## FASE 3–9
+## FASE 3 — Project system ✅
+
+- **`src/data/projects.ts`** extended: `Project` type now has `year`, `caseStudy?`, `github?` (was: `id`, `url`, `tags`, `featured?`). Added `featuredProjects`/`otherProjects` derived exports (filtered by `.featured`).
+- **GitHub links populated** for the 11 confirmed-public repos (mapped in Fase 0). `cafe-productions` and `dandy-portfolio` (the site itself) are left without a `github` field — no repo found locally for Café, and `MeuPortfolio` wasn't part of the batch Dandy explicitly confirmed as public, so it's not linked yet (pending confirmation, tracked below).
+- **Café Productions tags corrected**: `['React', 'Java', 'Spring Boot']`, replacing the wrong `['Next.js', 'Framer Motion', 'Community']` — matches Dandy's confirmation (and his CV).
+- **New self-referential project**: `dandy-portfolio` added to `projects.ts` (`url: portfoliodandy.com`), marked `featured`. It's the site itself, used as a case study.
+- **`year`** populated for all 12 pre-existing projects from each local repo's real first-commit date (`git log --reverse`) — genuinely verified data, not guessed. Café Productions keeps `2025` from the CV (no local repo to check).
+- **Featured vs. Other split**: `Projects.tsx` now renders `featuredProjects` (IronMind, Café Productions, Dandy Portfolio — 3 cards) through a new, richer `FeaturedProjectCard.tsx` (case study link, live + GitHub icon actions, year, `next/image`-optimized screenshot), and `otherProjects` (the remaining 10) through the existing `ProjectCard.tsx`, now showing a GitHub icon when `project.github` is set (restructured to a stretched-link pattern so the card link and the GitHub icon-link don't nest invalidly).
+- **`next.config.js`**: added `images.remotePatterns` for `api.microlink.io`, so featured cards can use `next/image` (optimized) while the "Other Projects" grid keeps the existing plain `<img>` Microlink fallback, as scoped.
+- **Case study system**: `src/app/[locale]/projects/[slug]/page.tsx`, statically generated for all 3 slugs × 3 locales via `generateStaticParams`. Content lives entirely in `messages/{pt,es,en}.json` under two new namespaces — `caseStudy` (generic section labels/buttons, shared by all case studies) and `caseStudies.<slug>` (the actual prose: overview, problem, solution, responsibilities, architecture, keyFeatures[], engineeringDecisions[]) — following the same "facts in `.ts`, prose in `.json`" pattern already used for `projects.items`. This is a small deviation from the original plan (which sketched separate `src/data/case-studies/*.ts` files) — going through `messages/*.json` avoids a parallel, duplicate content system and reuses the project's existing i18n architecture directly.
+  - `challenges` and `whatLearned` render as an explicit "still writing this up" pending state (not fabricated) for all 3 case studies — flagged below for Dandy to fill in with real specifics whenever he has them.
+  - Café Productions' `engineeringDecisions` is an empty array (nothing beyond what's already confirmed) — the page hides that section entirely when empty rather than showing a blank heading.
+- **Verified**: `npm run build` clean; ran the dev server and inspected `/pt/projects/ironmind`, `/en/projects/dandy-portfolio`, `/es/projects/cafe-productions` directly — correct content, correct conditional hiding (no GitHub button/section where there's no data), correct year/tags. Confirmed via `next/image` request inspection that featured cards route through Next's image optimizer (`/_next/image?url=...microlink...`) while the 10 "other" cards still hit Microlink directly, as intended. Counted DOM elements to confirm exactly 3 "View case study" links and 11 GitHub icon buttons render (1 featured + 10 others — matches the data).
+
+## FASE 4–9
 
 Not started yet — picking up next.
+
+---
+
+## Open items for Dandy (updated)
+1. **Domain SSL** (Vercel dashboard, manual) — unchanged from Fase 0, still pending.
+2. **Café Productions repo**: still not found locally. If it exists somewhere, share it and I'll add the GitHub link + repo-verified details to its case study.
+3. **`dandy-portfolio`'s own repo** (`github.com/DandyXandy/MeuPortfolio`): found in `git remote -v`, but wasn't in the batch of repos you explicitly confirmed as public — tell me if it's OK to link from its own case study (a "here's the code for the site you're on" moment is a strong recruiter signal, but I'm not linking it without your OK).
+4. **`challenges` / `whatLearned`** for all 3 case studies are placeholder ("still writing this up") — send me real specifics whenever you have them and I'll drop them in.
+5. `NOTIFICATION_EMAIL` in your real `.env`/Vercel — unchanged from Fase 0/1, still pending on your side if you want it too.
 
 ---
 

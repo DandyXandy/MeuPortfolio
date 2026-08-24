@@ -59,12 +59,14 @@ Not started yet — picking up next.
 
 ---
 
+## Decisions resolved by Dandy
+- **Café Productions GitHub link**: intentionally omitted — the repo is private (client project for a company), so the case study only ever shows the live-site link. No code change needed, this was already the state; `data/projects.ts` comment updated to reflect the real reason instead of "not found."
+- **`dandy-portfolio`'s own GitHub link**: intentionally omitted — Dandy's call, doesn't want to expose the portfolio's own code even though the repo exists. Same as above, comment updated.
+
 ## Open items for Dandy (updated)
 1. **Domain SSL** (Vercel dashboard, manual) — unchanged from Fase 0, still pending.
-2. **Café Productions repo**: still not found locally. If it exists somewhere, share it and I'll add the GitHub link + repo-verified details to its case study.
-3. **`dandy-portfolio`'s own repo** (`github.com/DandyXandy/MeuPortfolio`): found in `git remote -v`, but wasn't in the batch of repos you explicitly confirmed as public — tell me if it's OK to link from its own case study (a "here's the code for the site you're on" moment is a strong recruiter signal, but I'm not linking it without your OK).
-4. **`challenges` / `whatLearned`** for all 3 case studies are placeholder ("still writing this up") — send me real specifics whenever you have them and I'll drop them in.
-5. `NOTIFICATION_EMAIL` in your real `.env`/Vercel — unchanged from Fase 0/1, still pending on your side if you want it too.
+2. **`challenges` / `whatLearned`** for all 3 case studies are placeholder ("still writing this up") — send me real specifics whenever you have them and I'll drop them in.
+3. `NOTIFICATION_EMAIL` in your real `.env`/Vercel — unchanged from Fase 0/1, still pending on your side if you want it too.
 
 ---
 

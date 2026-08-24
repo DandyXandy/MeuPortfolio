@@ -25,7 +25,8 @@
 //   caseStudy -> slug da página de case study (só projetos featured),
 //               tem que bater com o arquivo em src/data/case-studies/
 //   github   -> link do repositório, só preencha se o repo for público
-//               de verdade — se não tiver, deixe undefined (o botão
+//               de verdade — se for privado (projeto de cliente) ou você
+//               preferir não mostrar o código, deixe undefined (o botão
 //               "Ver código" simplesmente não aparece, sem link quebrado)
 //
 // PASSO 3 — abra os 3 arquivos de tradução:
@@ -76,8 +77,9 @@ export const projects: Project[] = [
     year: 2025,
     featured: true,
     caseStudy: 'cafe-productions',
-    // Sin repo local encontrado en esta máquina — sin botón "Ver código"
-    // hasta que Dandy indique dónde está.
+    // Sin campo github a propósito: el repo es privado (proyecto hecho
+    // para una empresa/cliente) — Dandy confirmó que se muestra solo
+    // el link al sitio en vivo, sin botón de código.
   },
   {
     id: 'dandy-portfolio',
@@ -86,8 +88,8 @@ export const projects: Project[] = [
     year: 2026,
     featured: true,
     caseStudy: 'dandy-portfolio',
-    // github pendiente: MeuPortfolio no estaba en la lista de repos que
-    // Dandy confirmó como públicos — no se agrega el link sin confirmar.
+    // Sin campo github a propósito: Dandy prefirió no exponer el código
+    // del propio portfolio, aunque el repo (MeuPortfolio) exista.
   },
   {
     id: 'brutal-labs',

@@ -60,7 +60,16 @@ Most of this phase was already covered incidentally by Fase 2 (`About.tsx`'s fac
 - **`About.tsx`**: added a compact "Courses" pill row (same visual pattern as the soft-skills pills) right below soft skills — the 2 confirmed Udemy Java courses, shortened to fit a pill (`Java (POO) — Udemy`, `Java (Do Zero ao Profissional) — Udemy`), with a small uppercase caption above. Deliberately not a new full section — keeps the "not a CV rendered as a website" instruction intact.
 - **Verified**: `npm run build` clean; confirmed both course pills render correctly on `/pt`; confirmed no mobile overflow at 375px.
 
-## FASE 5–9
+## FASE 5 — Services (commercial system, preserved) ✅
+
+Contact-info centralization and Home reordering were already done in Fase 1/2. What was left: the Plans teaser copy itself still read as a hard sales pitch ("Investimento" / "Nossos Planos") sitting right where a recruiter would land after proof — softened it to feel like a secondary, honest offer instead.
+
+- **`messages/{pt,es,en}.json → plans`**: `eyebrow` "Investimento/Inversión/Investment" → "Serviços/Servicios/Services"; `title` "Nossos Planos/Nuestros Planes/Our Plans" → a direct question ("Precisa construir algo?" / "¿Necesitas construir algo?" / "Need something built?"); `subtitle` now explicitly frames it as secondary to the personal projects ("Além dos meus projetos pessoais, também desenvolvo sites profissionais sob demanda..."). Nothing else in the `plans` namespace touched — pricing, comparison table, conditions all identical.
+- **`planos/page.tsx`**: its `generateMetadata` was pulling the browser-tab title from `plans.title`/`plans.subtitle`, which would've inherited the new question-style teaser copy and read oddly as a tab title for a pricing/comparison page — switched it to use `plans.compareTitle`/`plans.compareSubtitle` instead (already existed, unused until now), so the dedicated `/planos` page keeps its own accurate identity independent of the Home teaser's framing.
+- Confirmed **nothing else changes**: `Plans.tsx`, `RequestProjectCta.tsx`, both wizards, both API routes, Supabase tables, Resend emails, PDF generation, `/solicitar-projeto`, `/continuar-projeto`, `/projeto/[token]` — all untouched functionally.
+- **Verified**: `npm run build` clean; loaded `/pt/solicitar-projeto` and `/pt/continuar-projeto` directly in the dev server — both wizards' first step renders correctly (all fields/options, correct copy, Voltar/Continuar). Multi-step click-through automation proved unreliable in this sandboxed preview (the browser pane doesn't composite real clicks reliably here — same limitation noted in earlier phases), so this was verified via a combination of direct load + the fact that Fase 1/5 never touched any wizard step component internals (confirmed by grep — zero matches for the old contact constants inside `request-project/` or `continue-project/`) + a clean `tsc --strict` build covering every file including the two `SuccessScreen.tsx` files that *were* edited.
+
+## FASE 6–9
 
 Not started yet — picking up next.
 

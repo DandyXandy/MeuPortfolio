@@ -15,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'plans' });
-  return { title: `${t('title')} — Dandy Abadie`, description: t('subtitle') };
+  return { title: `${t('compareTitle')} — Dandy Abadie`, description: t('compareSubtitle') };
 }
 
 export default async function PlansPage({ params }: { params: Promise<{ locale: string }> }) {

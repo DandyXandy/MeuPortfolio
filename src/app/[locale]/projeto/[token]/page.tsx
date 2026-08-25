@@ -13,7 +13,7 @@ import { whatsappLink } from '@/data/profile';
 const STATUS_VALUES = ['received', 'in_review', 'proposal_sent', 'approved'] as const;
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { title: 'Seu Projeto — Dandy Abadie', robots: { index: false, follow: false } };
+  return { title: 'Seu Projeto', robots: { index: false, follow: false } };
 }
 
 async function getBriefing(token: string) {

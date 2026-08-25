@@ -3,12 +3,13 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import AosInit from '@/components/AosInit';
-import { projects, featuredProjects } from '@/data/projects';
+import { featuredProjects } from '@/data/projects';
+import { buildAlternates } from '@/lib/site';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -35,8 +36,9 @@ export async function generateMetadata({
   const tCase = await getTranslations({ locale, namespace: 'caseStudies' });
 
   return {
-    title: `${t(`items.${project.id}.title`)} — Dandy Abadie`,
+    title: t(`items.${project.id}.title`),
     description: tCase(`${slug}.overview`),
+    alternates: buildAlternates(locale as Locale, `/projects/${slug}`),
   };
 }
 

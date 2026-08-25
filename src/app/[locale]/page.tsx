@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -11,6 +12,17 @@ import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import SmoothScroll from '@/components/SmoothScroll';
 import AosInit from '@/components/AosInit';
+import { buildAlternates, personJsonLd } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return { alternates: buildAlternates(locale as Locale, '/') };
+}
 
 // Orden pensado para "proof before sales": la evidencia técnica (proyectos)
 // aparece justo después del Hero, antes de la narrativa personal y muy
@@ -18,6 +30,11 @@ import AosInit from '@/components/AosInit';
 export default function HomePage() {
   return (
     <SmoothScroll>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
+      />
       <AosInit />
       <Navbar />
       <main>

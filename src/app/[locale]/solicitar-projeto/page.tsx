@@ -3,6 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import RequestProjectWizard from '@/components/request-project/RequestProjectWizard';
 import AosInit from '@/components/AosInit';
+import { buildAlternates } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 
 export async function generateMetadata({
   params,
@@ -13,8 +15,9 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'requestProject' });
 
   return {
-    title: `${t('title')} — Dandy Abadie`,
+    title: t('title'),
     description: t('subtitle'),
+    alternates: buildAlternates(locale as Locale, '/solicitar-projeto'),
   };
 }
 

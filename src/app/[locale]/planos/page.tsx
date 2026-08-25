@@ -7,6 +7,8 @@ import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import AosInit from '@/components/AosInit';
 import { PLANS, COMPARISON_ROWS, EXTRAS, MAINTENANCE_PLANS, CONDITIONS_COUNT, formatSoles } from '@/lib/plans/data';
+import { buildAlternates } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
 
 export async function generateMetadata({
   params,
@@ -15,7 +17,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'plans' });
-  return { title: `${t('compareTitle')} — Dandy Abadie`, description: t('compareSubtitle') };
+  return {
+    title: t('compareTitle'),
+    description: t('compareSubtitle'),
+    alternates: buildAlternates(locale as Locale, '/planos'),
+  };
 }
 
 export default async function PlansPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { MessageCircle, Mail, Linkedin, Github } from 'lucide-react';
 import { profile, mailtoLink } from '@/data/profile';
 
-export default function Footer() {
-  const t = useTranslations('footer');
+export default async function Footer() {
+  const t = await getTranslations('footer');
   const year = new Date().getFullYear();
 
   const socials = [

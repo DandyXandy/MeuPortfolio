@@ -1,10 +1,10 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { GraduationCap, CalendarDays, MapPin, Languages, Code2 } from 'lucide-react';
 
-export default function About() {
-  const t = useTranslations('about');
+// Server Component: solo lee traducciones y arma markup estático, sin
+// estado ni interacción — no necesita 'use client'.
+export default async function About() {
+  const t = await getTranslations('about');
 
   const stats = [
     { icon: GraduationCap, label: t('stats.university.label'), value: t('stats.university.value') },

@@ -1,11 +1,9 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { MessageCircle, Mail, Linkedin, Github } from 'lucide-react';
 import { profile, whatsappLink, mailtoLink } from '@/data/profile';
 
-export default function Contact() {
-  const t = useTranslations('contact');
+export default async function Contact() {
+  const t = await getTranslations('contact');
 
   const channels = [
     {

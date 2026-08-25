@@ -1,11 +1,9 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { ArrowRight, Sparkles, MessageCircleMore } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
-export default function RequestProjectCta() {
-  const t = useTranslations('requestProjectCta');
+export default async function RequestProjectCta() {
+  const t = await getTranslations('requestProjectCta');
 
   return (
     <section className="relative bg-ink py-6">

@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { MotionConfig } from 'framer-motion';
 import { routing, type Locale } from '@/i18n/routing';
 import { SITE_URL, ogLocale } from '@/lib/site';
 import '../globals.css';
@@ -87,9 +88,18 @@ export default async function LocaleLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="bg-ink font-sans antialiased">
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        {/* reducedMotion="user" hace que TODAS las animaciones de Framer
+            Motion en el sitio respeten prefers-reduced-motion del SO
+            automáticamente — antes solo el Hero lo chequeaba a mano
+            (Navbar, FloatingWhatsApp, los wizards no lo hacían). Las
+            animaciones infinitas del Hero (blobs) siguen además con su
+            propio check manual, porque acortar la duración no alcanza
+            para "apagar" un loop infinito — eso sí necesita quitarse. */}
+        <MotionConfig reducedMotion="user">
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </MotionConfig>
       </body>
     </html>
   );

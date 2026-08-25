@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 const categories = [
   {
@@ -34,8 +32,8 @@ const terminalLines = [
   'sempre aprendendo, sempre construindo_',
 ];
 
-export default function Skills() {
-  const t = useTranslations('skills');
+export default async function Skills() {
+  const t = await getTranslations('skills');
 
   return (
     <section id="skills" className="relative bg-ink-900 bg-ink py-28">

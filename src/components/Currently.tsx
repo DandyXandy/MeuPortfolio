@@ -1,11 +1,9 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
-export default function Currently() {
-  const t = useTranslations('currently');
-  const tVenture = useTranslations('venture');
+export default async function Currently() {
+  const t = await getTranslations('currently');
+  const tVenture = await getTranslations('venture');
   const items = t.raw('items') as string[];
 
   return (

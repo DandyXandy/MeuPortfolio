@@ -1,12 +1,10 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { featuredProjects, otherProjects } from '@/data/projects';
 import FeaturedProjectCard from './FeaturedProjectCard';
 import ProjectCard from './ProjectCard';
 
-export default function Projects() {
-  const t = useTranslations('projects');
+export default async function Projects() {
+  const t = await getTranslations('projects');
 
   return (
     <section id="projetos" className="relative bg-ink py-28">

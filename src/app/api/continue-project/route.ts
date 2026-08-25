@@ -5,8 +5,13 @@ import { buildContinueProjectBriefData } from '@/lib/continue-project/buildBrief
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import ProjectBriefDocument from '@/lib/pdf/ProjectBriefDocument';
 import { sendNotificationEmail, sendConfirmationEmail } from '@/lib/email/resend';
+import { isRateLimited, getClientIp } from '@/lib/rate-limit';
 
 export async function POST(request: Request) {
+  if (isRateLimited(`continue-project:${getClientIp(request)}`)) {
+    return NextResponse.json({ error: 'rate_limited' }, { status: 429 });
+  }
+
   const json = await request.json().catch(() => null);
   const parsed = continueProjectSchema.safeParse(json);
 

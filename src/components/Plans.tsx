@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { ArrowRight, Building2, LayoutGrid, ShoppingCart, CreditCard } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { PLANS, formatSoles } from '@/lib/plans/data';
@@ -12,8 +10,8 @@ const ICONS = {
   'ecommerce-gateway': CreditCard,
 };
 
-export default function Plans() {
-  const t = useTranslations('plans');
+export default async function Plans() {
+  const t = await getTranslations('plans');
 
   return (
     <section id="planos" className="relative bg-ink py-28">

@@ -115,9 +115,41 @@ Reviewed rather than changed. The Fase 3 work already did the concrete safe opti
 ### 7. Supabase / Resend / DNS / production config
 **Not touched**, confirmed by reviewing every file changed this phase — no schema, credentials, Resend config, or DNS/domain settings were modified.
 
-## FASE 8
+## FASE 8 — QA final ✅
 
-See the checkpoint report below.
+### ESLint / Next 16
+Confirmed (Fase 0 recon, re-verified against the installed `next@16.2.12`'s own bundled docs) that this Next version's documented approach is flat config (`eslint.config.mjs`) + running the ESLint CLI directly — the legacy `.eslintrc.json` + `next lint` is deprecated. Did **not** copy old config.
+- Installed `eslint` + `eslint-config-next` as devDependencies (dev-only, zero effect on production).
+- `eslint.config.mjs`: spreads `eslint-config-next/core-web-vitals` + `eslint-config-next/typescript`, with one targeted override disabling `@typescript-eslint/no-require-imports` for `next.config.js` only (it's CommonJS on purpose — Next still loads it that way pre-transpilation).
+- `package.json`: `"lint": "eslint ."` (was `"next lint"`, which would either fail or trigger an interactive setup wizard now that no legacy config exists — confirmed in Fase 0).
+
+### Bugs found and fixed by actually running the tools (not just reading code)
+- `next.config.js` — `require()` flagged; handled via the override above (correct for a CJS file), not by rewriting the file's module format.
+- `src/app/[locale]/page.tsx` — leftover unused `eslint-disable` comment, removed.
+- `src/app/[locale]/projects/[slug]/page.tsx` — unused `notFound` import, removed.
+- **`STEP_COMPONENTS: Record<WizardStep, React.ComponentType<any>>`** in both wizards (`RequestProjectWizard.tsx`, `ContinueProjectWizard.tsx`) — pre-existing `any`, flagged by lint. My first fix attempt (`React.ComponentType` with no generic) **broke the production build** — `tsc` caught it immediately: `StepSummary` is the one step component that actually takes props (`onEdit`, `isSubmitting`) and is special-cased in the render (`currentStep === 'summary' ? <StepSummary .../> : <StepComponent />`), so the map's value type genuinely wasn't uniform. Real fix: excluded `'summary'` from the `Record`'s key type (`Record<Exclude<WizardStep, 'summary'>, React.ComponentType>`) and moved the lookup so TypeScript narrows `currentStep`/`currentStepId` away from `'summary'` at the point of access (`currentStep === 'summary' ? null : STEP_COMPONENTS[currentStep]`). No more `any`, and it's now actually more correct than before (the old `any` was silently hiding that `'summary'` was never really a valid lookup key). Caught and corrected in the same pass — see the "risks" note below about why this specific fix needed the full loop (lint → typecheck → build) rather than trusting lint alone.
+- **`src/lib/pdf/ProjectBriefDocument.tsx`** — unused `Font` import removed; unescaped `"` around "Solicitar Projeto" in the PDF footer text fixed (`&quot;`); and, found while in this file for the lint fix — **the footer referenced a stale, wrong domain** (`dandyabadie.dev`, which isn't a domain this project owns or has ever used) instead of `portfoliodandy.com`. Fixed. This is a real, pre-existing bug — every PDF brief sent to an actual prospective client had the wrong URL in the footer.
+
+### Full verification pass (ran, not just read)
+- **TypeScript**: `npx tsc --noEmit` → clean, 0 errors.
+- **Lint**: `npm run lint` → 0 errors, 1 informational warning (`ContinueProjectWizard.tsx`, React Compiler noting it skips memoizing around `react-hook-form`'s `watch()` — a known, documented library-compatibility note, not a bug; fixing it would mean restructuring the pre-existing draft-autosave logic, out of scope for "don't touch the wizards beyond navigation/copy").
+- **Build**: `npm run build` → clean, all 27 routes generated.
+- **`npm audit`**: 4 pre-existing high-severity advisories, all inside `next`'s own dependency tree (`postcss`, `sharp`, `nanoid` — transitive, not things this project imports directly). **Not fixed** — `npm audit fix` here would attempt to bump `next` itself, a core framework upgrade with real risk of breaking things, completely outside this phase's scope. Flagged as a known risk below, not silently ignored.
+- **Every route × all 3 locales** (21 combinations: home, `/planos`, `/solicitar-projeto`, `/continuar-projeto`, and the 3 case studies, × pt/es/en) — hit directly with `curl` against the dev server: all `200`. An invalid route correctly `404`s. `/projeto/[token]` with a fake token correctly renders its "not found" state at `200` (by design — it's a soft 404, matching the existing pattern) and still carries `noindex, nofollow`.
+- **SEO re-confirmed** post-Fase-7-refactor (Server Component conversion could plausibly have broken next-intl resolution — it didn't): `robots.txt` `200`, `sitemap.xml` `200`, `/pt/opengraph-image` `200`.
+- **CV**: `GET /cv/dandy-abadie-cv.pdf` → `200`, `application/pdf`, confirmed a real 1-page PDF (not a broken/empty file).
+- **External links**: every GitHub repo link (11), LinkedIn, and both WhatsApp deep-links (footer + the pre-filled-message one) present and correctly formed in the rendered HTML.
+- **Navbar**: desktop link order confirmed matching Fase 2/5 (`Projetos, Sobre, Skills, Serviços, Contato`); mobile menu opens and contains all 5 links **plus** Currículo and GitHub **plus** the locale switcher and "Solicitar Projeto" button.
+- **Touch targets**: mobile menu button re-measured at `44×44px` at both 320px and 375px viewports (the Fase 1 fix holds).
+- **`prefers-reduced-motion` / focus-visible**: confirmed the Fase 1 global CSS (`globals.css`) and the Fase 7 `MotionConfig` are both still present and untouched by later phases. Actually forcing the OS-level `prefers-reduced-motion` media query to verify the *rendered* behavior end-to-end isn't possible in this sandboxed browser tool — marked **NO VERIFICADO** for the live visual confirmation specifically (the code path itself was read and is correct).
+- **Contrast**: re-swept for any reintroduced `text-mist/40` across every file touched since Fase 1 — found exactly one hit (`ProjectCard.tsx`, the `ExternalLink` icon). Confirmed this is **not** a violation: it's a decorative icon, not text, so WCAG 1.4.11 (Non-text Contrast, 3:1 minimum) applies instead of 1.4.3 (text, 4.5:1) — the ~3.5:1 ratio measured in the original audit already clears that bar.
+- **Responsive / overflow**: checked `document.body.scrollWidth > window.innerWidth` at 320, 390, 430, 768, 1024, and 1440px on the Home page, plus 390px on `/planos` and a case study page — **zero horizontal overflow** at any breakpoint.
+- **Rate limiting**: re-confirmed still working after all Fase 8 edits (same live test as Fase 7 — 4th+ request from one IP gets `429`).
+- **Featured projects / case studies / services**: all visually and structurally confirmed via the route sweep above plus direct content checks earlier in Fase 6/7 (3 "Ver case study" links present, correct tags/year/github-icon-conditional rendering).
+
+## Checkpoint report
+
+See the message accompanying this update in the conversation for the full 16-point checkpoint (git status, commits, TypeScript/lint/build results, recruiter/senior-engineer re-tests, risks, and required manual actions).
 
 ---
 

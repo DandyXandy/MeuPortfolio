@@ -27,7 +27,9 @@ import SuccessScreen from './SuccessScreen';
 
 const STORAGE_KEY = 'continue-project-draft';
 
-const STEP_COMPONENTS: Record<WizardStep, React.ComponentType<any>> = {
+// 'summary' queda afuera a propósito: es el único paso que recibe props
+// (onEdit/isSubmitting) y se renderiza aparte, nunca a través de este mapa.
+const STEP_COMPONENTS: Record<Exclude<WizardStep, 'summary'>, React.ComponentType> = {
   clientInfo: StepClientInfo,
   business: StepBusiness,
   projectType: StepProjectType,
@@ -36,7 +38,6 @@ const STEP_COMPONENTS: Record<WizardStep, React.ComponentType<any>> = {
   references: StepReferences,
   timeline: StepTimeline,
   budget: StepBudget,
-  summary: StepSummary,
 };
 
 const DEFAULT_VALUES: Partial<ContinueProjectInput> = {
@@ -114,7 +115,7 @@ export default function ContinueProjectWizard() {
   }, [visibleSteps]);
 
   const stepIndex = Math.max(0, visibleSteps.indexOf(currentStepId));
-  const StepComponent = STEP_COMPONENTS[currentStepId];
+  const StepComponent = currentStepId === 'summary' ? null : STEP_COMPONENTS[currentStepId];
 
   const stepLabels: Record<WizardStep, string> = {
     clientInfo: t('progress.clientInfo'),
@@ -223,7 +224,7 @@ export default function ContinueProjectWizard() {
               {currentStepId === 'summary' ? (
                 <StepSummary onEdit={handleEditFromSummary} isSubmitting={isSubmitting} />
               ) : (
-                <StepComponent />
+                StepComponent && <StepComponent />
               )}
             </motion.div>
           </AnimatePresence>

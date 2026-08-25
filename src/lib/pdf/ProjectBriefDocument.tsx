@@ -1,4 +1,4 @@
-import { Document, Page, View, Text, StyleSheet, Font } from '@react-pdf/renderer';
+import { Document, Page, View, Text, StyleSheet } from '@react-pdf/renderer';
 
 // Estrutura já "traduzida" — a rota da API resolve os textos (via
 // next-intl/server) antes de montar esse objeto, então este arquivo
@@ -104,7 +104,7 @@ export default function ProjectBriefDocument({ data }: { data: BriefData }) {
         ))}
 
         <Text style={styles.footer}>
-          Gerado automaticamente pelo formulário "Solicitar Projeto" — dandyabadie.dev
+          Gerado automaticamente pelo formulário &quot;Solicitar Projeto&quot; — portfoliodandy.com
         </Text>
       </Page>
     </Document>

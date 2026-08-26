@@ -45,13 +45,13 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-9 lg:flex">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              href={`/${link.href}`}
               className="text-sm font-medium tracking-wide text-mist/70 transition-colors hover:text-mist"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -103,14 +103,14 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-6 px-6 py-8">
               {links.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  href={`/${link.href}`}
                   onClick={() => setOpen(false)}
                   className="text-lg text-mist/80 hover:text-mist"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <a
                 href={profile.cvUrl}

@@ -8,16 +8,23 @@ function getResend() {
   return new Resend(apiKey);
 }
 
-export async function sendNotificationEmail(data: BriefData, pdfBuffer: Buffer) {
+export async function sendNotificationEmail(
+  data: BriefData,
+  pdfBuffer: Buffer,
+  opts: { dbSaved?: boolean } = {}
+) {
   const resend = getResend();
   const from = process.env.RESEND_FROM_EMAIL ?? 'Portfólio <onboarding@resend.dev>';
   const to = process.env.NOTIFICATION_EMAIL;
   if (!to) throw new Error('NOTIFICATION_EMAIL não configurado no .env');
 
+  // Se o Supabase falhou, o briefing só existe neste e-mail — o assunto avisa.
+  const dbWarning = opts.dbSaved === false ? ' ⚠ NÃO salvo no banco' : '';
+
   const { error } = await resend.emails.send({
     from,
     to,
-    subject: `Novo projeto: ${data.clientName} — ${data.projectTypeTitle}`,
+    subject: `Novo projeto: ${data.clientName} — ${data.projectTypeTitle}${dbWarning}`,
     html: notificationEmailHtml(data),
     attachments: [
       {

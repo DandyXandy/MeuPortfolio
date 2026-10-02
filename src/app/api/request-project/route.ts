@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   }
 
-  let requestId: string;
+  let requestId: string | null = null;
 
   try {
     const supabase = getSupabaseAdmin();
@@ -54,42 +54,47 @@ export async function POST(request: Request) {
     if (error || !row) throw error ?? new Error('insert_failed');
     requestId = row.id as string;
   } catch (err) {
+    // Banco fora do ar ou mal configurado: não descarta o pedido. Segue pro
+    // PDF + e-mail de notificação, que também carregam o briefing completo.
     console.error('[request-project] Falha ao salvar no Supabase:', err);
-    return NextResponse.json({ error: 'database_error' }, { status: 500 });
   }
 
-  // A partir daqui os dados já estão salvos com segurança. PDF e
-  // e-mails são "best effort": se falharem, logamos mas ainda
-  // respondemos sucesso ao cliente, porque o pedido já não se perde.
+  // PDF e e-mails são "best effort": se falharem, logamos e seguimos.
+  let notified = false;
   try {
     const briefData = await buildBriefData(data);
     const pdfBuffer = await renderToBuffer(ProjectBriefDocument({ data: briefData }));
 
-    try {
-      const supabase = getSupabaseAdmin();
-      const path = `${requestId}.pdf`;
-      await supabase.storage.from('project-briefs').upload(path, pdfBuffer, {
-        contentType: 'application/pdf',
-        upsert: true,
-      });
+    if (requestId) {
+      try {
+        const supabase = getSupabaseAdmin();
+        const path = `${requestId}.pdf`;
+        await supabase.storage.from('project-briefs').upload(path, pdfBuffer, {
+          contentType: 'application/pdf',
+          upsert: true,
+        });
 
-      const { data: signed } = await supabase.storage
-        .from('project-briefs')
-        .createSignedUrl(path, 60 * 60 * 24 * 60);
+        const { data: signed } = await supabase.storage
+          .from('project-briefs')
+          .createSignedUrl(path, 60 * 60 * 24 * 60);
 
-      if (signed?.signedUrl) {
-        await supabase
-          .from('project_requests')
-          .update({ pdf_url: signed.signedUrl })
-          .eq('id', requestId);
+        if (signed?.signedUrl) {
+          await supabase
+            .from('project_requests')
+            .update({ pdf_url: signed.signedUrl })
+            .eq('id', requestId);
+        }
+      } catch (err) {
+        console.error('[request-project] Falha ao salvar PDF no Storage:', err);
       }
-    } catch (err) {
-      console.error('[request-project] Falha ao salvar PDF no Storage:', err);
     }
 
-    await sendNotificationEmail(briefData, pdfBuffer).catch((err) =>
-      console.error('[request-project] Falha ao enviar e-mail de notificação:', err)
-    );
+    notified = await sendNotificationEmail(briefData, pdfBuffer, { dbSaved: requestId !== null })
+      .then(() => true)
+      .catch((err) => {
+        console.error('[request-project] Falha ao enviar e-mail de notificação:', err);
+        return false;
+      });
 
     await sendConfirmationEmail({
       clientEmail: data.contactEmail,
@@ -98,6 +103,12 @@ export async function POST(request: Request) {
     }).catch((err) => console.error('[request-project] Falha ao enviar e-mail de confirmação:', err));
   } catch (err) {
     console.error('[request-project] Falha ao gerar PDF/e-mails:', err);
+  }
+
+  // O pedido só é dado como perdido se NEM o banco NEM o e-mail pro dono
+  // funcionaram — aí sim o visitante precisa saber (e cai no WhatsApp).
+  if (!requestId && !notified) {
+    return NextResponse.json({ error: 'database_error' }, { status: 500 });
   }
 
   return NextResponse.json({ success: true, id: requestId });

@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   }
 
-  let briefingId: string;
+  let briefingId: string | null = null;
 
   try {
     const supabase = getSupabaseAdmin();
@@ -57,39 +57,46 @@ export async function POST(request: Request) {
     if (error || !row) throw error ?? new Error('insert_failed');
     briefingId = row.id as string;
   } catch (err) {
+    // Banco fora do ar ou mal configurado: não descarta o briefing. Segue pro
+    // PDF + e-mail de notificação, que também carregam tudo.
     console.error('[continue-project] Falha ao salvar no Supabase:', err);
-    return NextResponse.json({ error: 'database_error' }, { status: 500 });
   }
 
+  let notified = false;
   try {
     const briefData = await buildContinueProjectBriefData(data);
     const pdfBuffer = await renderToBuffer(ProjectBriefDocument({ data: briefData }));
 
-    try {
-      const supabase = getSupabaseAdmin();
-      const path = `${briefingId}.pdf`;
-      await supabase.storage.from('project-briefs').upload(path, pdfBuffer, {
-        contentType: 'application/pdf',
-        upsert: true,
-      });
+    if (briefingId) {
+      try {
+        const supabase = getSupabaseAdmin();
+        const path = `${briefingId}.pdf`;
+        await supabase.storage.from('project-briefs').upload(path, pdfBuffer, {
+          contentType: 'application/pdf',
+          upsert: true,
+        });
 
-      const { data: signed } = await supabase.storage
-        .from('project-briefs')
-        .createSignedUrl(path, 60 * 60 * 24 * 60);
+        const { data: signed } = await supabase.storage
+          .from('project-briefs')
+          .createSignedUrl(path, 60 * 60 * 24 * 60);
 
-      if (signed?.signedUrl) {
-        await supabase
-          .from('project_briefings')
-          .update({ pdf_url: signed.signedUrl })
-          .eq('id', briefingId);
+        if (signed?.signedUrl) {
+          await supabase
+            .from('project_briefings')
+            .update({ pdf_url: signed.signedUrl })
+            .eq('id', briefingId);
+        }
+      } catch (err) {
+        console.error('[continue-project] Falha ao salvar PDF no Storage:', err);
       }
-    } catch (err) {
-      console.error('[continue-project] Falha ao salvar PDF no Storage:', err);
     }
 
-    await sendNotificationEmail(briefData, pdfBuffer).catch((err) =>
-      console.error('[continue-project] Falha ao enviar e-mail de notificação:', err)
-    );
+    notified = await sendNotificationEmail(briefData, pdfBuffer, { dbSaved: briefingId !== null })
+      .then(() => true)
+      .catch((err) => {
+        console.error('[continue-project] Falha ao enviar e-mail de notificação:', err);
+        return false;
+      });
 
     await sendConfirmationEmail({
       clientEmail: data.contactEmail,
@@ -98,6 +105,11 @@ export async function POST(request: Request) {
     }).catch((err) => console.error('[continue-project] Falha ao enviar e-mail de confirmação:', err));
   } catch (err) {
     console.error('[continue-project] Falha ao gerar PDF/e-mails:', err);
+  }
+
+  // Só é "perdido" se NEM o banco NEM o e-mail pro dono funcionaram.
+  if (!briefingId && !notified) {
+    return NextResponse.json({ error: 'database_error' }, { status: 500 });
   }
 
   return NextResponse.json({ success: true, id: briefingId });

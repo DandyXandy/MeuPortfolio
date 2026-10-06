@@ -399,7 +399,12 @@
     "requestCta": "Solicitar mi proyecto",
     "perMonth": "/mes",
     "delivery": "Entrega en {days} días",
-    "viewExample": "Ver ejemplo",
+    "exampleLabels": {
+      "concept": "Demo conceptual",
+      "fictional": "Demo (tienda ficticia)",
+      "own": "Mi proyecto, en vivo"
+    },
+    "examplesNote": "Los demos conceptuales son propuestas de diseño que hice por iniciativa propia: los negocios mostrados no son mis clientes. Casa Merengue es una tienda ficticia y ONYRAK es un proyecto mío.",
     "mobileIncluded": "Qué incluye",
     "items": {
       "institutional": {

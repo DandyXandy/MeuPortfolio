@@ -399,7 +399,12 @@
     "requestCta": "Request my project",
     "perMonth": "/mo",
     "delivery": "Delivered in {days} days",
-    "viewExample": "See example",
+    "exampleLabels": {
+      "concept": "Concept demo",
+      "fictional": "Demo (fictional store)",
+      "own": "My own project, live"
+    },
+    "examplesNote": "Concept demos are design proposals I made on my own initiative: the businesses shown are not my clients. Casa Merengue is a fictional store and ONYRAK is my own project.",
     "mobileIncluded": "What's included",
     "items": {
       "institutional": {

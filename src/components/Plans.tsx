@@ -74,7 +74,7 @@ export default async function Plans() {
                     rel="noopener noreferrer"
                     className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-violet-light transition-colors hover:text-mist"
                   >
-                    {t('viewExample')}
+                    {t(`exampleLabels.${plan.exampleKind}`)}
                     <ArrowUpRight size={15} />
                   </a>
                 </div>
@@ -83,7 +83,11 @@ export default async function Plans() {
           })}
         </div>
 
-        <div className="mt-12 text-center" data-aos="fade-up">
+        <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-mist/50">
+          {t('examplesNote')}
+        </p>
+
+        <div className="mt-10 text-center" data-aos="fade-up">
           <Link
             href="/planos"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-sm font-semibold text-mist transition-colors hover:border-violet-light/40 hover:text-violet-light"

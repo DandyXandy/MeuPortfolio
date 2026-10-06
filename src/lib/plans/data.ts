@@ -4,13 +4,17 @@
 // interno, custo ou margem aparece aqui: só os valores públicos.
 
 // deliveryDays conta a partir do recebimento de textos, fotos e logo.
-// exampleUrl aponta pra um site real ou demo publicado de cada tipo.
+// exampleUrl aponta pra um demo publicado de cada tipo. exampleKind diz o que
+// ele é, pra nunca parecer cliente: 'concept' = proposta de design feita por
+// iniciativa própria pra um negócio real (não é cliente), 'fictional' = loja
+// inventada, 'own' = projeto próprio do Dandy.
 export const PLANS = [
   {
     id: 'institutional',
     priceFrom: 700,
     deliveryDays: 7,
     exampleUrl: 'https://orthozent-six.vercel.app',
+    exampleKind: 'concept',
     featured: false,
   },
   {
@@ -18,6 +22,7 @@ export const PLANS = [
     priceFrom: 750,
     deliveryDays: 10,
     exampleUrl: 'https://casamerengue.vercel.app',
+    exampleKind: 'fictional',
     featured: false,
   },
   {
@@ -25,6 +30,7 @@ export const PLANS = [
     priceFrom: 1250,
     deliveryDays: 15,
     exampleUrl: 'https://resaca-ebon.vercel.app',
+    exampleKind: 'concept',
     featured: false,
   },
   {
@@ -32,6 +38,7 @@ export const PLANS = [
     priceFrom: 1500,
     deliveryDays: 21,
     exampleUrl: 'https://onyrak.com',
+    exampleKind: 'own',
     featured: true,
   },
 ] as const;

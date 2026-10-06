@@ -83,7 +83,7 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-violet-light"
                 >
-                  {t('viewExample')}
+                  {t(`exampleLabels.${plan.exampleKind}`)}
                   <ArrowUpRight size={15} />
                 </a>
               </div>
@@ -115,7 +115,7 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
                         rel="noopener noreferrer"
                         className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-violet-light hover:text-mist"
                       >
-                        {t('viewExample')}
+                        {t(`exampleLabels.${plan.exampleKind}`)}
                         <ArrowUpRight size={13} />
                       </a>
                     </th>
@@ -146,7 +146,9 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
             </table>
           </div>
 
-          <div className="mt-6 text-center">
+          <p className="mt-5 max-w-2xl text-xs leading-relaxed text-mist/50">{t('examplesNote')}</p>
+
+          <div className="mt-8 text-center">
             <Link
               href="/solicitar-projeto"
               className="inline-flex items-center gap-2 rounded-full bg-aurora-gradient px-8 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-105"

@@ -1,5 +1,13 @@
 import { getTranslations } from 'next-intl/server';
-import { ArrowRight, Building2, LayoutGrid, ShoppingCart, CreditCard } from 'lucide-react';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Building2,
+  Clock,
+  LayoutGrid,
+  ShoppingCart,
+  CreditCard,
+} from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { PLANS, formatSoles } from '@/lib/plans/data';
 
@@ -51,11 +59,24 @@ export default async function Plans() {
                 <p className="mt-2 text-sm leading-relaxed text-mist/60">
                   {t(`items.${plan.id}.description`)}
                 </p>
-                <div className="mt-6">
+                <div className="mt-auto pt-6">
                   <p className="text-xs uppercase tracking-widest2 text-mist/60">{t('from')}</p>
                   <p className="font-display text-2xl font-semibold text-mist">
                     {formatSoles(plan.priceFrom)}
                   </p>
+                  <p className="mt-2 flex items-center gap-1.5 text-xs text-mist/60">
+                    <Clock size={13} className="text-violet-light" />
+                    {t('delivery', { days: plan.deliveryDays })}
+                  </p>
+                  <a
+                    href={plan.exampleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-violet-light transition-colors hover:text-mist"
+                  >
+                    {t('viewExample')}
+                    <ArrowUpRight size={15} />
+                  </a>
                 </div>
               </div>
             );

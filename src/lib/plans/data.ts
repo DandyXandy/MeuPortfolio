@@ -3,11 +3,37 @@
 // ids e a matriz de quais recursos cada plano inclui. Nenhum preço
 // interno, custo ou margem aparece aqui: só os valores públicos.
 
+// deliveryDays conta a partir do recebimento de textos, fotos e logo.
+// exampleUrl aponta pra um site real ou demo publicado de cada tipo.
 export const PLANS = [
-  { id: 'institutional', priceFrom: 700, featured: false },
-  { id: 'catalog', priceFrom: 750, featured: false },
-  { id: 'ecommerce-whatsapp', priceFrom: 1250, featured: false },
-  { id: 'ecommerce-gateway', priceFrom: 1500, featured: true },
+  {
+    id: 'institutional',
+    priceFrom: 700,
+    deliveryDays: 7,
+    exampleUrl: 'https://orthozent-six.vercel.app',
+    featured: false,
+  },
+  {
+    id: 'catalog',
+    priceFrom: 750,
+    deliveryDays: 10,
+    exampleUrl: 'https://casamerengue.vercel.app',
+    featured: false,
+  },
+  {
+    id: 'ecommerce-whatsapp',
+    priceFrom: 1250,
+    deliveryDays: 15,
+    exampleUrl: 'https://resaca-ebon.vercel.app',
+    featured: false,
+  },
+  {
+    id: 'ecommerce-gateway',
+    priceFrom: 1500,
+    deliveryDays: 21,
+    exampleUrl: 'https://onyrak.com',
+    featured: true,
+  },
 ] as const;
 
 export type PlanId = (typeof PLANS)[number]['id'];
@@ -36,13 +62,21 @@ export const COMPARISON_ROWS: { id: string; included: boolean[] }[] = [
 
 export const EXTRAS = ['extraProduct', 'productPackages', 'extraPage', 'extraFeatures'] as const;
 
+// O tier "basic" (hospedagem + domínio + pequenos ajustes) não existe pro
+// e-commerce com gateway: pagamento online exige acompanhamento contínuo.
 export const MAINTENANCE_PLANS = [
-  { id: 'institutionalCatalog', tiers: [{ id: 'essential', price: 150 }, { id: 'pro', price: 220 }] },
-  { id: 'ecommerceWhatsapp', tiers: [{ id: 'essential', price: 200 }, { id: 'pro', price: 300 }] },
+  {
+    id: 'institutionalCatalog',
+    tiers: [{ id: 'basic', price: 60 }, { id: 'essential', price: 150 }, { id: 'pro', price: 220 }],
+  },
+  {
+    id: 'ecommerceWhatsapp',
+    tiers: [{ id: 'basic', price: 80 }, { id: 'essential', price: 200 }, { id: 'pro', price: 300 }],
+  },
   { id: 'ecommerceGateway', tiers: [{ id: 'essential', price: 300 }, { id: 'pro', price: 400 }] },
 ] as const;
 
-export const CONDITIONS_COUNT = 8;
+export const CONDITIONS_COUNT = 9;
 
 // Formata em Soles com ponto como separador de milhar (padrão peruano).
 // Não usamos toLocaleString('es-PE') porque os dados do ICU pra esse

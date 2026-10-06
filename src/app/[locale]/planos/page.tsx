@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { Check, Minus, ArrowRight } from 'lucide-react';
+import { Check, Minus, ArrowRight, ArrowUpRight, Clock } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -44,8 +44,54 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
           </h1>
           <p className="mt-3 max-w-xl text-base text-mist/60">{t('compareSubtitle')}</p>
 
-          {/* Tabela comparativa — rolagem horizontal no mobile, primeira coluna fixa */}
-          <div className="mt-12 overflow-x-auto rounded-2xl border border-white/10">
+          {/* Mobile: um card por plano, só com o que está incluído */}
+          <div className="mt-10 space-y-5 md:hidden">
+            {PLANS.map((plan, planIndex) => (
+              <div
+                key={plan.id}
+                className={`rounded-2xl border p-5 ${
+                  plan.featured
+                    ? 'border-violet-light/50 bg-aurora-gradient-soft'
+                    : 'border-white/10 bg-white/[0.03]'
+                }`}
+              >
+                <p className="font-display text-lg font-semibold text-mist">
+                  {t(`items.${plan.id}.title`)}
+                </p>
+                <p className="mt-1 text-sm text-mist/60">
+                  {t('from')}{' '}
+                  <span className="font-semibold text-mist">{formatSoles(plan.priceFrom)}</span>
+                </p>
+                <p className="mt-2 flex items-center gap-1.5 text-xs text-mist/60">
+                  <Clock size={13} className="text-violet-light" />
+                  {t('delivery', { days: plan.deliveryDays })}
+                </p>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-widest2 text-mist/50">
+                  {t('mobileIncluded')}
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {COMPARISON_ROWS.filter((row) => row.included[planIndex]).map((row) => (
+                    <li key={row.id} className="flex gap-2.5 text-sm text-mist/70">
+                      <Check size={16} className="mt-0.5 shrink-0 text-violet-light" />
+                      {t(`rows.${row.id}`)}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={plan.exampleUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-violet-light"
+                >
+                  {t('viewExample')}
+                  <ArrowUpRight size={15} />
+                </a>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop/tablet: tabela comparativa com a primeira coluna fixa */}
+          <div className="mt-12 hidden overflow-x-auto rounded-2xl border border-white/10 md:block">
             <table className="w-full min-w-[720px] border-collapse text-sm">
               <thead>
                 <tr className="border-b border-white/10 bg-white/[0.03]">
@@ -53,13 +99,25 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
                     {t('feature')}
                   </th>
                   {PLANS.map((plan) => (
-                    <th key={plan.id} className="min-w-[140px] px-5 py-4 text-left">
+                    <th key={plan.id} className="min-w-[140px] px-5 py-4 text-left align-top">
                       <p className="font-display text-sm font-semibold text-mist">
                         {t(`items.${plan.id}.title`)}
                       </p>
                       <p className="mt-1 text-xs font-normal text-mist/60">
                         {t('from')} {formatSoles(plan.priceFrom)}
                       </p>
+                      <p className="mt-1 text-xs font-normal text-mist/60">
+                        {t('delivery', { days: plan.deliveryDays })}
+                      </p>
+                      <a
+                        href={plan.exampleUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-violet-light hover:text-mist"
+                      >
+                        {t('viewExample')}
+                        <ArrowUpRight size={13} />
+                      </a>
                     </th>
                   ))}
                 </tr>
@@ -123,6 +181,9 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
               {t('maintenance.eyebrow')}
             </p>
             <h2 className="font-display text-2xl font-semibold text-mist">{t('maintenance.title')}</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist/60">
+              {t('maintenance.basicNote')}
+            </p>
             <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
               {MAINTENANCE_PLANS.map((group) => (
                 <div key={group.id} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">

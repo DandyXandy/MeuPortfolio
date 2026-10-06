@@ -398,6 +398,9 @@
     "compareSubtitle": "See exactly what's included in each plan before deciding.",
     "requestCta": "Request my project",
     "perMonth": "/mo",
+    "delivery": "Delivered in {days} days",
+    "viewExample": "See example",
+    "mobileIncluded": "What's included",
     "items": {
       "institutional": {
         "title": "Corporate Site",
@@ -419,7 +422,7 @@
     "rows": {
       "modernDesign": "Modern, responsive design",
       "upToFivePages": "Up to 5 pages/sections",
-      "domainIncluded": "Domain included (1st year)",
+      "domainIncluded": ".com domain included (1st year)",
       "homeAboutInfo": "Home / about / info pages",
       "whatsappButton": "WhatsApp button",
       "googleMaps": "Google Maps",
@@ -448,7 +451,8 @@
     },
     "maintenance": {
       "eyebrow": "Ongoing support",
-      "title": "Optional maintenance"
+      "title": "Optional maintenance",
+      "basicNote": "Basic: hosting, .com domain renewal and small text and image tweaks. Not available for E-commerce Gateway, which needs ongoing payment monitoring."
     },
     "maintenanceGroups": {
       "institutionalCatalog": "Corporate Site & Catalog",
@@ -456,6 +460,7 @@
       "ecommerceGateway": "E-commerce Gateway"
     },
     "maintenanceTiers": {
+      "basic": "Basic",
       "essential": "Essential",
       "pro": "Pro"
     },
@@ -465,11 +470,12 @@
       "items": [
         "50% upfront and 50% on delivery.",
         "Payment methods: Yape, Plin, bank transfer, or an agreed method.",
-        "Domain included in the first year when specified in the plan.",
-        "Annual domain renewal is the client's responsibility.",
+        "Delivery times start once texts, photos and logo are received.",
+        ".com domain included in the first year when specified in the plan.",
+        "Annual domain renewal is the client's responsibility, unless a maintenance plan is active.",
         "Changes outside the agreed scope may be billed separately.",
         "15-day warranty for bug fixes related to the delivered project.",
-        "External issues with banks, payment gateways, or providers are not Dandy Digital's direct responsibility.",
+        "External issues with banks, payment gateways, or providers are not Dandy Abadie's direct responsibility.",
         "New features requested after scope approval may require an additional quote."
       ]
     }

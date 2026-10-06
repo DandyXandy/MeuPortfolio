@@ -17,7 +17,7 @@ export default async function Footer() {
     <footer className="border-t border-white/10 bg-ink-950">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-10 text-center lg:px-10">
         <p className="font-display text-xl text-mist">
-          DANDY<span className="text-aurora-gradient">.DEV</span>
+          Dandy <span className="text-aurora-gradient">Abadie</span>
         </p>
 
         <div className="flex items-center gap-4">

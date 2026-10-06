@@ -398,6 +398,9 @@
     "compareSubtitle": "Veja exatamente o que está incluído em cada plano antes de decidir.",
     "requestCta": "Solicitar meu projeto",
     "perMonth": "/mês",
+    "delivery": "Entrega em {days} dias",
+    "viewExample": "Ver exemplo",
+    "mobileIncluded": "O que inclui",
     "items": {
       "institutional": {
         "title": "Site Institucional",
@@ -419,7 +422,7 @@
     "rows": {
       "modernDesign": "Design moderno e responsivo",
       "upToFivePages": "Até 5 páginas/seções",
-      "domainIncluded": "Domínio incluso (1º ano)",
+      "domainIncluded": "Domínio .com incluso (1º ano)",
       "homeAboutInfo": "Página inicial / sobre / informações",
       "whatsappButton": "Botão WhatsApp",
       "googleMaps": "Google Maps",
@@ -448,7 +451,8 @@
     },
     "maintenance": {
       "eyebrow": "Suporte contínuo",
-      "title": "Manutenção opcional"
+      "title": "Manutenção opcional",
+      "basicNote": "Básico: hospedagem, renovação do domínio .com e pequenos ajustes de texto e imagem. Não disponível para E-commerce Gateway, que exige acompanhamento contínuo dos pagamentos."
     },
     "maintenanceGroups": {
       "institutionalCatalog": "Site Institucional e Catálogo",
@@ -456,6 +460,7 @@
       "ecommerceGateway": "E-commerce Gateway"
     },
     "maintenanceTiers": {
+      "basic": "Básico",
       "essential": "Essencial",
       "pro": "Pro"
     },
@@ -465,11 +470,12 @@
       "items": [
         "50% no início do projeto e 50% na entrega.",
         "Formas de pagamento: Yape, Plin, transferência ou método combinado.",
-        "Domínio incluso no primeiro ano quando especificado no plano.",
-        "Renovação anual do domínio fica por conta do cliente.",
+        "Prazos de entrega contam a partir do recebimento de textos, fotos e logo.",
+        "Domínio .com incluso no primeiro ano quando especificado no plano.",
+        "Renovação anual do domínio fica por conta do cliente, exceto com plano de manutenção ativo.",
         "Alterações fora do escopo podem ser cobradas separadamente.",
         "Garantia de 15 dias para correção de bugs relacionados ao projeto entregue.",
-        "Problemas externos de banco, gateway ou provedor não são de responsabilidade direta da Dandy Digital.",
+        "Problemas externos de banco, gateway ou provedor não são de responsabilidade direta de Dandy Abadie.",
         "Novas funcionalidades solicitadas após aprovação do escopo podem gerar orçamento adicional."
       ]
     }

@@ -84,7 +84,7 @@ export default function ProjectBriefDocument({ data }: { data: BriefData }) {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Text style={styles.brand}>DANDY.DEV — SOLICITAR PROJETO</Text>
+          <Text style={styles.brand}>DANDY ABADIE — SOLICITAR PROJETO</Text>
           <Text style={styles.title}>{data.heading}</Text>
           <Text style={styles.meta}>
             {data.clientName} · {data.projectTypeTitle} · {data.submittedAt}
